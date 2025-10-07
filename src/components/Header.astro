@@ -1,0 +1,167 @@
+---
+export interface Props {
+  currentPage?: 'facts' | 'archive' | 'about';
+}
+
+const { currentPage = 'facts' } = Astro.props;
+---
+
+<header class="header">
+  <div class="header-ornament"></div>
+  <div class="header-content">
+    <div class="branding">
+      <a href="/" class="site-title">
+        <h1>That's interesting.</h1>
+        <p class="tagline">500 words of wonder, daily.</p>
+      </a>
+    </div>
+
+    <nav class="nav" aria-label="Main navigation">
+      <a
+        href="/"
+        class:list={['nav-link', { active: currentPage === 'facts' }]}
+        aria-current={currentPage === 'facts' ? 'page' : undefined}
+      >
+        Stream
+      </a>
+      <span class="nav-divider">·</span>
+      <a
+        href="/archive"
+        class:list={['nav-link', { active: currentPage === 'archive' }]}
+        aria-current={currentPage === 'archive' ? 'page' : undefined}
+      >
+        Archive
+      </a>
+      <span class="nav-divider">·</span>
+      <a
+        href="/about"
+        class:list={['nav-link', { active: currentPage === 'about' }]}
+        aria-current={currentPage === 'about' ? 'page' : undefined}
+      >
+        About
+      </a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .header {
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 3rem;
+    background: var(--surface);
+    position: relative;
+  }
+
+  .header-ornament {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(to right,
+      var(--pastel-pink) 0%,
+      var(--pastel-lavender) 20%,
+      var(--pastel-mint) 40%,
+      var(--pastel-peach) 60%,
+      var(--pastel-sky) 80%,
+      var(--pastel-coral) 100%
+    );
+    opacity: 0.5;
+  }
+
+  .header-content {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 2rem var(--page-gutter) 1.75rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .branding {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .site-title {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .site-title h1 {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 500;
+    margin: 0;
+    color: var(--text);
+    letter-spacing: -0.02em;
+    font-style: normal;
+  }
+
+  .tagline {
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    text-transform: none;
+    letter-spacing: 0.01em;
+    color: var(--text-medium);
+    margin: 0;
+    margin-top: 0.25rem;
+    font-style: italic;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+  }
+
+  .nav-divider {
+    color: var(--border);
+    font-size: 0.9rem;
+  }
+
+  .nav-link {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-lighter);
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 0.25rem;
+  }
+
+  .nav-link.active {
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  .nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: currentColor;
+  }
+
+  @media (max-width: 640px) {
+    .header-content {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 1.5rem var(--page-gutter);
+    }
+
+    .nav {
+      gap: 1.5rem;
+      width: 100%;
+    }
+
+    .site-title h1 {
+      font-size: 1.35rem;
+    }
+  }
+</style>

@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+:root {
+  /* Typography */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'Crimson Text', Georgia, serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Colors - Minimal & Elegant */
+  --text: #1a1a1a;
+  --text-medium: #4a4a4a;
+  --text-light: #6b6b6b;
+  --text-lighter: #a0a0a0;
+  --text-lightest: #d4d4d4;
+
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --border: rgba(0, 0, 0, 0.05);
+  --border-light: rgba(0, 0, 0, 0.03);
+
+  /* Muted, faded accents - slightly brighter */
+  --pastel-pink: #e0c8d4;
+  --pastel-lavender: #d4cce4;
+  --pastel-mint: #c8dcd0;
+  --pastel-peach: #e4d4c8;
+  --pastel-sky: #c8dce8;
+  --pastel-coral: #dcc8d0;
+
+  /* Layout - More generous spacing */
+  --content-width: 720px;
+  --page-gutter: 3rem;
+  --section-gap: 5rem;
+  --card-gap: 2.5rem;
+
+  /* Animation */
+  --ease: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-spring: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-feature-settings: "liga" 1, "kern" 1;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.75;
+  overflow-x: hidden;
+  min-height: 100vh;
+  font-size: 18px;
+}
+
+/* Removed background pattern for cleaner look */
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (prefers-contrast: high) {
+  :root {
+    --border: rgba(0, 0, 0, 0.2);
+    --text-lighter: #555;
+  }
+}

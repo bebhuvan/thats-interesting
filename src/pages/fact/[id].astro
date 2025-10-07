@@ -1,0 +1,376 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import type { Fact } from '../../types/fact';
+import factsData from '../../data/facts.json';
+
+export const prerender = true;
+
+export async function getStaticPaths() {
+  const facts: Fact[] = factsData.facts;
+
+  return facts.map((fact) => ({
+    params: { id: fact.id },
+    props: { fact },
+  }));
+}
+
+const { fact } = Astro.props;
+
+// Ensure fact exists and has required properties
+if (!fact) {
+  return Astro.redirect('/404');
+}
+
+// Format the date
+const date = fact.generated ? new Date(fact.generated) : new Date();
+const formattedDate = date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric'
+});
+---
+
+<BaseLayout title={`${fact.title} - Wonder Stream`} description={fact.content}>
+  <Header />
+
+  <div class="container">
+    <article class="fact-detail">
+      <!-- Breadcrumb -->
+      <nav class="breadcrumb">
+        <a href="/">← Back to stream</a>
+      </nav>
+
+      <!-- Metadata -->
+      <div class="meta">
+        <span class="category">{fact.category}</span>
+        {fact.scale && <span class="scale">{fact.scale}</span>}
+        <span class="date">{formattedDate}</span>
+      </div>
+
+      <!-- Title -->
+      <h1 class="title">{fact.title}</h1>
+
+      <!-- Wonder Score -->
+      {fact.wonderScore && (
+        <div class="wonder-score">
+          <span class="label">Wonder Score</span>
+          <div class="score-bar">
+            <div class="score-fill" style={`width: ${fact.wonderScore * 10}%`}></div>
+          </div>
+          <span class="score-value">{fact.wonderScore}/10</span>
+        </div>
+      )}
+
+      <!-- Main Content -->
+      <div class="content">
+        {fact.content && fact.content.split('\n\n').filter((p: string) => p.trim()).map((paragraph: string) => (
+          <p class="paragraph">{paragraph}</p>
+        ))}
+      </div>
+
+      <!-- Deep Dive (Legacy - for old facts) -->
+      {fact.deepDive && (
+        <div class="deep-dive">
+          <h2>Additional Context</h2>
+          <p>{fact.deepDive}</p>
+        </div>
+      )}
+
+      <!-- Source -->
+      {fact.source && (
+        <div class="source">
+          <h3>Source</h3>
+          <p>{fact.source}</p>
+        </div>
+      )}
+
+      <!-- Related Wikipedia Articles (placeholder for AI generation) -->
+      {fact.relatedLinks && fact.relatedLinks.length > 0 && (
+        <div class="related-links">
+          <h3>Related Reading</h3>
+          <ul>
+            {fact.relatedLinks.map((link: any) => (
+              <li>
+                <a href={link.url} target="_blank" rel="noopener noreferrer">
+                  {link.title}
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.5 1.5L1.5 10.5M10.5 1.5H4.5M10.5 1.5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <!-- Share -->
+      <div class="share">
+        <button class="share-btn" onclick="navigator.share ? navigator.share({title: document.title, url: window.location.href}) : navigator.clipboard.writeText(window.location.href).then(() => alert('Link copied!'))">
+          Share this fact
+        </button>
+      </div>
+    </article>
+  </div>
+</BaseLayout>
+
+<style>
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 var(--page-gutter) var(--section-gap);
+  }
+
+  .fact-detail {
+    padding-bottom: 4rem;
+  }
+
+  .breadcrumb {
+    margin-bottom: 2rem;
+  }
+
+  .breadcrumb a {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-lighter);
+    text-decoration: none;
+    transition: color 0.2s var(--ease);
+  }
+
+  .breadcrumb a:hover {
+    color: var(--text);
+  }
+
+  .meta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+  }
+
+  .meta span {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-lightest);
+  }
+
+  .category {
+    color: var(--text-lighter) !important;
+  }
+
+  .title {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    font-weight: 500;
+    line-height: 1.25;
+    color: var(--text);
+    letter-spacing: -0.025em;
+    margin: 0 0 2rem;
+  }
+
+  .wonder-score {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    padding: 1rem 1.25rem;
+    background: var(--bg);
+    border-radius: 4px;
+  }
+
+  .wonder-score .label {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-lighter);
+    white-space: nowrap;
+  }
+
+  .score-bar {
+    flex: 1;
+    height: 4px;
+    background: var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  .score-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--pastel-pink), var(--pastel-lavender));
+    transition: width 0.5s var(--ease);
+  }
+
+  .score-value {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  .content {
+    margin-bottom: 3rem;
+  }
+
+  .paragraph {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-medium);
+    margin: 0 0 1.5rem 0;
+  }
+
+  .paragraph:last-child {
+    margin-bottom: 0;
+  }
+
+  .paragraph:first-child {
+    font-size: 1.15rem;
+    color: var(--text);
+  }
+
+  .deep-dive {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: var(--bg);
+    border-radius: 4px;
+    border-left: 3px solid var(--pastel-mint);
+  }
+
+  .deep-dive h2 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin: 0 0 1rem;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+
+  .deep-dive p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--text-medium);
+    margin: 0;
+  }
+
+  .source {
+    margin-bottom: 3rem;
+    padding: 1.5rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+  }
+
+  .source h3 {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--text-lighter);
+    margin: 0 0 0.75rem;
+  }
+
+  .source p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  .related-links {
+    margin-bottom: 3rem;
+  }
+
+  .related-links h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 500;
+    margin: 0 0 1.25rem;
+    color: var(--text);
+    letter-spacing: -0.02em;
+  }
+
+  .related-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .related-links li {
+    border-left: 2px solid var(--border);
+    padding-left: 1rem;
+    transition: border-color 0.2s var(--ease);
+  }
+
+  .related-links li:hover {
+    border-left-color: var(--pastel-sky);
+  }
+
+  .related-links a {
+    font-size: 0.95rem;
+    color: var(--text);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.2s var(--ease);
+  }
+
+  .related-links a:hover {
+    color: var(--text-light);
+  }
+
+  .related-links svg {
+    opacity: 0.4;
+    transition: opacity 0.2s var(--ease);
+  }
+
+  .related-links a:hover svg {
+    opacity: 0.8;
+  }
+
+  .share {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+
+  .share-btn {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 0.85rem 1.5rem;
+    background: var(--text);
+    color: var(--surface);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s var(--ease);
+  }
+
+  .share-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 640px) {
+    .container {
+      padding: 0 1.25rem 3rem;
+    }
+
+    .title {
+      font-size: 1.85rem;
+    }
+
+    .main-text {
+      font-size: 1.05rem;
+    }
+  }
+</style>

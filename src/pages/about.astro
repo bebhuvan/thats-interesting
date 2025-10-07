@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+---
+
+<BaseLayout title="About - Wonder Stream">
+  <Header currentPage="about" />
+
+    <main class="content">
+      <h2 class="page-title">About Wonder Stream</h2>
+
+      <div class="prose">
+        <p>
+          Wonder Stream is a curated collection of fascinating facts about our world—from the quantum realm to the cosmic scale, from ancient history to cutting-edge science.
+        </p>
+
+        <p>
+          Each fact is carefully selected and verified to spark curiosity, shift perspective, and reveal the remarkable patterns hidden in everyday reality.
+        </p>
+
+        <h3>Why Wonder Stream?</h3>
+        <p>
+          In a world of information overload, we believe in the power of carefully curated knowledge. Each fact here is chosen not just for accuracy, but for its ability to inspire wonder and connect disparate ideas.
+        </p>
+
+        <h3>Our Approach</h3>
+        <ul>
+          <li><strong>Quality over quantity</strong> — Every fact is scored across multiple dimensions</li>
+          <li><strong>Source attribution</strong> — Transparency in where knowledge comes from</li>
+          <li><strong>Progressive disclosure</strong> — Explore deeper when curiosity strikes</li>
+          <li><strong>Beautiful presentation</strong> — Design that respects your attention</li>
+        </ul>
+
+        <h3>Technology</h3>
+        <p>
+          Wonder Stream is built with Astro and powered by Cloudflare Workers AI, combining modern web technology with intelligent fact generation and curation.
+        </p>
+
+        <div class="footer-note">
+          <p>Questions or feedback? We'd love to hear from you.</p>
+        </div>
+      </div>
+    </main>
+</BaseLayout>
+
+<style>
+  .content {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 0 var(--page-gutter) var(--section-gap);
+  }
+
+  .page-title {
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    font-weight: 500;
+    margin-bottom: 2.5rem;
+    margin-top: 0;
+    color: var(--text);
+    letter-spacing: -0.025em;
+    line-height: 1.25;
+  }
+
+  .prose {
+    color: var(--text-medium);
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 600px;
+  }
+
+  .prose p {
+    margin-bottom: 1.5rem;
+  }
+
+  .prose h3 {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--text);
+    margin: 3rem 0 1.25rem;
+    letter-spacing: -0.02em;
+  }
+
+  .prose ul {
+    margin: 1.5rem 0;
+    padding-left: 1.5rem;
+    list-style: none;
+  }
+
+  .prose li {
+    margin-bottom: 0.85rem;
+    position: relative;
+    padding-left: 1.25rem;
+  }
+
+  .prose li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--text-lightest);
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .prose strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .footer-note {
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+    color: var(--text-lighter);
+    font-size: 0.9rem;
+  }
+
+  .footer-note p {
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .content {
+      padding: 0 1.25rem 3rem;
+    }
+
+    .page-title {
+      font-size: 1.85rem;
+    }
+  }
+</style>

@@ -1,0 +1,28 @@
+name = "wonder-stream"
+main = "dist/_worker.js"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+# Assets configuration for static files
+[assets]
+directory = "dist"
+binding = "ASSETS"
+
+[ai]
+binding = "AI"
+remote = true
+
+[[kv_namespaces]]
+binding = "WONDER_STREAM_KV"
+id = "73e94d04c16a453781f66e48c3a6e89b"
+
+# Scheduled daily fact generation (runs at 00:00 UTC)
+[triggers]
+crons = ["0 0 * * *"]
+
+[env.production]
+name = "wonder-stream-production"
+
+[[env.production.kv_namespaces]]
+binding = "WONDER_STREAM_KV"
+id = "placeholder"

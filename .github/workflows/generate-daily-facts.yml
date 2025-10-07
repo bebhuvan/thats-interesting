@@ -1,0 +1,38 @@
+name: Generate Daily Facts
+
+on:
+  schedule:
+    # Run every day at 00:00 UTC
+    - cron: '0 0 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Generate new facts
+        env:
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+        run: node scripts/generate-facts.mjs
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "Wonder Stream Bot"
+          git config user.email "bot@wonder-stream.app"
+          git add src/data/facts.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "✨ Daily facts generated $(date +'%Y-%m-%d')" && git push)

@@ -1,0 +1,29 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const {
+  title = "Wonder Stream",
+  description = "Discoveries flow like thoughts through consciousness"
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{title}</title>
+  <meta name="description" content={description}>
+
+  <!-- Security Headers via Meta -->
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+</head>
+<body>
+  <slot />
+</body>
+</html>

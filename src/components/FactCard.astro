@@ -1,0 +1,222 @@
+---
+import type { Fact } from '../types/fact';
+
+export interface Props {
+  fact: Fact;
+  mode?: 'reading' | 'explore';
+  featured?: boolean;
+}
+
+const { fact, mode = 'reading', featured = false } = Astro.props;
+const { id, title, summary, content, category, wonderScore } = fact;
+
+// Use summary for cards if available, otherwise use first 250 chars of content
+const displayText = summary || content.substring(0, 250) + (content.length > 250 ? '...' : '');
+---
+
+<article
+  class:list={['fact', { featured }, `fact-${mode}`]}
+  data-fact-id={id}
+  data-category={category.toLowerCase()}
+  data-mode={mode}
+>
+  <a href={`/fact/${id}`} class="fact-link">
+    <div class="fact-meta">
+      <span class="fact-category">{category}</span>
+      {wonderScore && <span class="fact-score">★ {wonderScore}/10</span>}
+    </div>
+
+    <h2 class="fact-title">{title}</h2>
+    <p class="fact-content">{displayText}</p>
+
+    <div class="read-more">
+      <span class="read-more-text">Continue reading</span>
+      <span class="read-more-arrow">→</span>
+    </div>
+  </a>
+</article>
+
+<style>
+  .fact {
+    background: var(--surface);
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    margin-bottom: var(--card-gap);
+    margin-left: 0;
+    margin-right: 0;
+    position: relative;
+    border-left: 4px solid transparent;
+    box-shadow: 0 0 0 1px var(--border);
+    overflow: hidden;
+  }
+
+  .fact-link {
+    display: block;
+    padding: 2.5rem 2rem;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .fact.featured .fact-link {
+    padding: 3.5rem 2.5rem;
+  }
+
+  /* Pastel left borders with matching subtle background tints */
+  .fact:nth-child(6n+1) {
+    border-left-color: var(--pastel-pink);
+    background: linear-gradient(to right, rgba(224, 200, 212, 0.08) 0%, var(--surface) 20%);
+  }
+  .fact:nth-child(6n+2) {
+    border-left-color: var(--pastel-lavender);
+    background: linear-gradient(to right, rgba(212, 204, 228, 0.08) 0%, var(--surface) 20%);
+  }
+  .fact:nth-child(6n+3) {
+    border-left-color: var(--pastel-mint);
+    background: linear-gradient(to right, rgba(200, 220, 208, 0.08) 0%, var(--surface) 20%);
+  }
+  .fact:nth-child(6n+4) {
+    border-left-color: var(--pastel-peach);
+    background: linear-gradient(to right, rgba(228, 212, 200, 0.08) 0%, var(--surface) 20%);
+  }
+  .fact:nth-child(6n+5) {
+    border-left-color: var(--pastel-sky);
+    background: linear-gradient(to right, rgba(200, 220, 232, 0.08) 0%, var(--surface) 20%);
+  }
+  .fact:nth-child(6n) {
+    border-left-color: var(--pastel-coral);
+    background: linear-gradient(to right, rgba(220, 200, 208, 0.08) 0%, var(--surface) 20%);
+  }
+
+  .fact.featured {
+    border-left-width: 5px;
+  }
+
+  .fact-meta {
+    margin-bottom: 1rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .fact-category {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-size: 0.625rem;
+    color: var(--text-lighter);
+    font-weight: 400;
+  }
+
+  .fact-score {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    color: var(--text-lightest);
+    letter-spacing: 0.05em;
+  }
+
+  .fact-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 500;
+    margin-bottom: 1.25rem;
+    line-height: 1.35;
+    color: var(--text);
+    letter-spacing: -0.015em;
+  }
+
+  .fact.featured .fact-title {
+    font-size: 2.25rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.25;
+    font-weight: 400;
+  }
+
+  .fact-content {
+    line-height: 1.8;
+    color: var(--text-medium);
+    font-size: 1rem;
+    letter-spacing: 0.005em;
+    margin-bottom: 1.5rem;
+  }
+
+  .read-more {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .read-more-text {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--text-light);
+  }
+
+  .read-more-arrow {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--text-lightest);
+    font-weight: 300;
+  }
+
+  /* Explore mode positioning */
+  .fact-explore {
+    position: absolute;
+    max-width: 380px;
+    cursor: grab;
+    will-change: transform;
+  }
+
+  .fact-explore:active {
+    cursor: grabbing;
+  }
+
+  /* Category colors for explore mode */
+  .fact-explore[data-category*="physics"] {
+    border-left: 2px solid rgba(244, 144, 77, 0.4);
+  }
+
+  .fact-explore[data-category*="biology"] {
+    border-left: 2px solid rgba(134, 239, 172, 0.5);
+  }
+
+  .fact-explore[data-category*="neuroscience"] {
+    border-left: 2px solid rgba(196, 181, 253, 0.5);
+  }
+
+  .fact-explore[data-category*="mathematics"] {
+    border-left: 2px solid rgba(252, 211, 77, 0.5);
+  }
+
+  .fact-explore[data-category*="history"] {
+    border-left: 2px solid rgba(251, 191, 36, 0.4);
+  }
+
+  .fact-explore[data-category*="astronomy"] {
+    border-left: 2px solid rgba(165, 243, 252, 0.5);
+  }
+
+  @media (max-width: 768px) {
+    .fact {
+      padding: 2.5rem;
+    }
+
+    .fact::after {
+      left: 2.5rem;
+      right: 2.5rem;
+    }
+
+    .fact-title {
+      font-size: 1.6rem;
+    }
+
+    .fact.featured .fact-title {
+      font-size: 1.9rem;
+    }
+  }
+</style>

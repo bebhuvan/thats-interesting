@@ -6,9 +6,13 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "generate-facts": "node scripts/generate-facts.mjs"
   },
   "dependencies": {
-    "astro": "^5.14.1"
+    "@astrojs/cloudflare": "^12.6.9",
+    "@cloudflare/ai": "^1.2.2",
+    "astro": "^5.14.1",
+    "dotenv": "^17.2.3"
   }
 }
