@@ -4,18 +4,11 @@ import Header from '../../components/Header.astro';
 import type { Fact } from '../../types/fact';
 import factsData from '../../data/facts.json';
 
-export const prerender = true;
+const { id } = Astro.params;
 
-export async function getStaticPaths() {
-  const facts: Fact[] = factsData.facts;
-
-  return facts.map((fact) => ({
-    params: { id: fact.id },
-    props: { fact },
-  }));
-}
-
-const { fact } = Astro.props;
+// Find the fact by ID
+const facts: Fact[] = factsData.facts;
+const fact = facts.find((f) => f.id === id);
 
 // Ensure fact exists and has required properties
 if (!fact) {
