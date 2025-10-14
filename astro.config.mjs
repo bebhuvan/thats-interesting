@@ -6,12 +6,13 @@ import cloudflare from '@astrojs/cloudflare';
 export default defineConfig({
   output: 'server',
   adapter: cloudflare({
-    mode: 'directory',
+    imageService: 'compile',
     platformProxy: {
       enabled: true
     },
     routes: {
-      strategy: 'auto'
+      strategy: 'include',
+      include: ['/api/*', '/fact/*', '/about', '/archive']
     }
   }),
   vite: {
