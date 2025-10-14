@@ -1,6 +1,56 @@
 {
   "facts": [
     {
+      "id": "linguistic-mirage",
+      "title": "The Great Language Illusion: How Our Brains Deceive Us",
+      "summary": "Our brains process language in mysterious ways, creating illusions that shape our perception of reality. Discover how linguistic tricks fool our minds.",
+      "content": "Imagine walking into a room where everyone speaks a language you've never heard before. Yet, as you listen, you start to pick up on patterns and words. This is not just coincidence; it's the result of complex cognitive processes that allow us to recognize and mimic language. But what if our brains are being tricked into hearing words and meanings that aren't really there?\n\nThe phenomenon of linguistic illusions has been studied extensively in psychology and linguistics. One famous example is the 'illusory correlation,' where people perceive a relationship between two variables that don't actually exist. For instance, some individuals might believe that certain words or phrases are 'unlucky' simply because they've associated them with unfortunate events in the past. This cognitive bias can lead to the spread of superstitions and stereotypes.\n\nA deeper look into the history of linguistics reveals that our understanding of language has evolved significantly over time. The ancient Greeks believed that language was a divine gift, while modern linguists like Noam Chomsky argue that language is innate to the human brain. Recent studies in neuroscience have shed light on the brain's language processing mechanisms, revealing that areas like Broca's and Wernicke's are responsible for different aspects of language comprehension.\n\nThe connection between linguistic illusions and cognitive biases has broader implications for fields like marketing, politics, and education. By understanding how our brains process language, we can develop more effective strategies for communication and critical thinking. Moreover, the study of linguistic illusions can reveal hidden patterns in human behavior and decision-making.\n\nAs we navigate the complex landscape of human language, we're forced to confront the blurred lines between reality and perception. The great language illusion reminds us that our understanding of the world is filtered through the lens of cognition, and that the words we use can shape our very reality.",
+      "category": "Linguistics",
+      "scale": "human",
+      "wonderScore": 8,
+      "source": "Scientific American, Psychology Today",
+      "relatedLinks": [
+        {
+          "title": "Cognitive bias",
+          "url": "https://en.wikipedia.org/wiki/Cognitive_bias"
+        },
+        {
+          "title": "Illusory correlation",
+          "url": "https://en.wikipedia.org/wiki/Illusory_correlation"
+        },
+        {
+          "title": "Language processing in the brain",
+          "url": "https://en.wikipedia.org/wiki/Language_processing_in_the_brain"
+        }
+      ],
+      "generated": "2025-10-14T06:32:59.792Z"
+    },
+    {
+      "id": "sound-symbolic-magic",
+      "title": "The Secret Life of Words: Sound Symbolism Uncovered",
+      "summary": "Words are not just arbitrary sounds; they hold a hidden power that can evoke emotions and shape our perceptions. Discover the magic of sound symbolism.",
+      "content": "Have you ever noticed how certain words seem to 'sound' like their meanings? For example, 'buzz' or 'splash' evoke a sensory experience that's hard to ignore. This is not just a coincidence; it's the result of sound symbolism, a phenomenon where the sound of a word influences its meaning. Research has shown that sound symbolism is a widespread feature of human language, with words like 'ding-dong' or 'chirp' exhibiting a clear connection between sound and sense.\n\nOne of the most fascinating examples of sound symbolism is the 'bouba/kiki effect,' where people consistently associate the sound 'kiki' with sharp, angular shapes and 'bouba' with soft, rounded shapes. This effect has been observed across different cultures and languages, suggesting that sound symbolism is an innate aspect of human cognition.\n\nThe study of sound symbolism has its roots in ancient Greece, where philosophers like Plato and Aristotle explored the relationship between sound and meaning. In modern times, linguists like Mark Hauge have made significant contributions to our understanding of sound symbolism, revealing its presence in languages from English to Japanese.\n\nThe connection between sound symbolism and cognitive linguistics has far-reaching implications for fields like branding, advertising, and language teaching. By harnessing the power of sound symbolism, we can create more memorable and engaging language experiences that tap into our deepest cognitive biases.\n\nAs we explore the secret life of words, we're reminded that language is not just a tool for communication; it's a gateway to the hidden patterns of human perception and cognition. The magic of sound symbolism invites us to rethink our relationship with language and the world around us.",
+      "category": "Linguistics",
+      "scale": "human",
+      "wonderScore": 8,
+      "source": "The New York Times, Aeon",
+      "relatedLinks": [
+        {
+          "title": "Sound symbolism",
+          "url": "https://en.wikipedia.org/wiki/Sound_symbolism"
+        },
+        {
+          "title": "Bouba/kiki effect",
+          "url": "https://en.wikipedia.org/wiki/Bouba%2Fkiki_effect"
+        },
+        {
+          "title": "Onomatopoeia",
+          "url": "https://en.wikipedia.org/wiki/Onomatopoeia"
+        }
+      ],
+      "generated": "2025-10-14T06:32:59.792Z"
+    },
+    {
       "id": "galactic-canvas",
       "title": "The Universe's Largest Artwork: Galactic Filaments",
       "summary": "Discover the cosmic brushstrokes that shape the universe's vast structure. Galactic filaments form a complex network, weaving together galaxy clusters and superclusters.",
@@ -102,7 +152,7 @@
     }
   ],
   "meta": {
-    "lastGenerated": "2025-10-14T06:13:42.118Z",
-    "totalFacts": 4
+    "lastGenerated": "2025-10-14T06:32:59.792Z",
+    "totalFacts": 6
   }
 }
