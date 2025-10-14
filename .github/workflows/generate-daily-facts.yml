@@ -24,6 +24,9 @@ jobs:
         with:
           node-version: '18'
 
+      - name: Install dependencies
+        run: npm install
+
       - name: Generate new facts
         env:
           CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
