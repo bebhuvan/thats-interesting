@@ -4,12 +4,19 @@ import '../styles/global.css';
 export interface Props {
   title: string;
   description?: string;
+  image?: string;
+  type?: 'website' | 'article';
 }
 
 const {
-  title = "Wonder Stream",
-  description = "Discoveries flow like thoughts through consciousness"
+  title = "That's interesting.",
+  description = "The 'ooh, that's interesting' moment. Delivered daily.",
+  image = "/favicon.svg",
+  type = "website"
 } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const socialImage = new URL(image, Astro.site);
 ---
 
 <!DOCTYPE html>
@@ -17,11 +24,33 @@ const {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary Meta Tags -->
   <title>{title}</title>
+  <meta name="title" content={title}>
   <meta name="description" content={description}>
+  <link rel="canonical" href={canonicalURL}>
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content={type}>
+  <meta property="og:url" content={canonicalURL}>
+  <meta property="og:title" content={title}>
+  <meta property="og:description" content={description}>
+  <meta property="og:image" content={socialImage}>
+  <meta property="og:site_name" content="That's interesting.">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content={canonicalURL}>
+  <meta property="twitter:title" content={title}>
+  <meta property="twitter:description" content={description}>
+  <meta property="twitter:image" content={socialImage}>
 
   <!-- Security Headers via Meta -->
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 </head>
 <body>
   <slot />

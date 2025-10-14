@@ -7,24 +7,16 @@ const { currentPage = 'facts' } = Astro.props;
 ---
 
 <header class="header">
-  <div class="header-ornament"></div>
   <div class="header-content">
-    <div class="branding">
-      <a href="/" class="site-title">
-        <h1>That's interesting.</h1>
-        <p class="tagline">500 words of wonder, daily.</p>
-      </a>
-    </div>
-
+    <a href="/" class="logo">That's interesting.</a>
     <nav class="nav" aria-label="Main navigation">
       <a
         href="/"
         class:list={['nav-link', { active: currentPage === 'facts' }]}
         aria-current={currentPage === 'facts' ? 'page' : undefined}
       >
-        Stream
+        Latest
       </a>
-      <span class="nav-divider">·</span>
       <a
         href="/archive"
         class:list={['nav-link', { active: currentPage === 'archive' }]}
@@ -32,7 +24,6 @@ const { currentPage = 'facts' } = Astro.props;
       >
         Archive
       </a>
-      <span class="nav-divider">·</span>
       <a
         href="/about"
         class:list={['nav-link', { active: currentPage === 'about' }]}
@@ -46,122 +37,114 @@ const { currentPage = 'facts' } = Astro.props;
 
 <style>
   .header {
-    border-bottom: 1px solid var(--border);
-    margin-bottom: 3rem;
-    background: var(--surface);
-    position: relative;
-  }
-
-  .header-ornament {
-    position: absolute;
+    background: var(--white);
+    padding: var(--space-lg) 0;
+    border-bottom: 2px solid var(--black);
+    position: sticky;
     top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(to right,
-      var(--pastel-pink) 0%,
-      var(--pastel-lavender) 20%,
-      var(--pastel-mint) 40%,
-      var(--pastel-peach) 60%,
-      var(--pastel-sky) 80%,
-      var(--pastel-coral) 100%
-    );
-    opacity: 0.5;
+    z-index: 100;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.98);
   }
 
   .header-content {
     max-width: var(--content-width);
     margin: 0 auto;
-    padding: 2rem var(--page-gutter) 1.75rem;
+    padding: 0 var(--page-gutter);
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  .branding {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-
-  .site-title {
+  .logo {
+    font-family: var(--serif);
+    font-size: 1.375rem;
+    font-weight: 300;
+    color: var(--black);
     text-decoration: none;
-    color: inherit;
-  }
-
-  .site-title h1 {
-    font-family: var(--font-display);
-    font-size: 2rem;
-    font-weight: 500;
-    margin: 0;
-    color: var(--text);
-    letter-spacing: -0.02em;
-    font-style: normal;
-  }
-
-  .tagline {
-    font-family: var(--font-body);
-    font-size: 0.875rem;
-    text-transform: none;
-    letter-spacing: 0.01em;
-    color: var(--text-medium);
-    margin: 0;
-    margin-top: 0.25rem;
     font-style: italic;
+    position: relative;
+    display: inline-block;
+    letter-spacing: -0.01em;
+  }
+
+  .logo::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 45px;
+    height: 3px;
+    background: var(--accent);
+    transform-origin: left;
+    transition: width 0.3s ease;
+  }
+
+  .logo:hover::after {
+    width: 100%;
   }
 
   .nav {
     display: flex;
-    gap: 1.25rem;
-    align-items: center;
-  }
-
-  .nav-divider {
-    color: var(--border);
-    font-size: 0.9rem;
+    gap: var(--space-lg);
+    font-family: var(--mono);
+    font-size: 0.8125rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   .nav-link {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--text-lighter);
+    color: var(--grey);
     text-decoration: none;
+    transition: color 0.3s;
     position: relative;
-    padding-bottom: 0.25rem;
+    padding-bottom: 2px;
   }
 
-  .nav-link.active {
-    color: var(--text);
-    font-weight: 400;
-  }
-
-  .nav-link.active::after {
+  .nav-link::after {
     content: '';
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     height: 2px;
-    background: currentColor;
+    background: var(--accent);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
   }
 
-  @media (max-width: 640px) {
+  .nav-link:hover {
+    color: var(--black);
+  }
+
+  .nav-link:hover::after {
+    transform: scaleX(1);
+  }
+
+  .nav-link.active {
+    color: var(--black);
+  }
+
+  .nav-link.active::after {
+    transform: scaleX(1);
+  }
+
+  @media (max-width: 768px) {
     .header-content {
       flex-direction: column;
       align-items: flex-start;
-      gap: 1.25rem;
-      padding: 1.5rem var(--page-gutter);
+      gap: var(--space-md);
+      padding: 0 var(--space-md);
     }
 
     .nav {
-      gap: 1.5rem;
+      gap: var(--space-lg);
       width: 100%;
     }
 
-    .site-title h1 {
-      font-size: 1.35rem;
+    .logo {
+      font-size: 1.25rem;
     }
   }
 </style>

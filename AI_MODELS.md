@@ -1,30 +1,42 @@
 # AI Model Comparison for Wonder Stream
 
-## ✅ Selected Model: Llama 4 Scout
+## ✅ Selected Model: GPT-OSS-120B
 
-**`@cf/meta/llama-4-scout-17b-16e-instruct`**
+**`@cf/openai/gpt-oss-120b`**
 
-### Why Llama 4 Scout?
+### Why GPT-OSS-120B?
 
-✅ **Best Value for Money**
-- **$0.27** per 1M input tokens
-- **$0.85** per 1M output tokens (63% cheaper than Llama 3.3 70B!)
+✅ **Massive Model Size**
+- **120B parameters** (7x larger than Llama 4 Scout!)
+- **128K token context window**
+- Perfect for complex creative writing tasks
 
-✅ **Massive Context Window**
-- **131,000 tokens** (vs 24K for Llama 3.3)
-- Perfect for understanding complex prompts
-- Can handle very long articles
+✅ **Superior Content Quality**
+- Much better creative variation and writing diversity
+- Excellent instruction following (GPT architecture)
+- Avoids repetitive patterns and clichés
+- Specific citations and technical depth
 
-✅ **Advanced Architecture**
-- **16 expert** mixture-of-experts model
-- **Natively multimodal** (text + images)
-- **17B parameters** optimized with expert routing
+✅ **Same Cost as Llama 4 Scout**
+- **$0.35** per 1M input tokens
+- **$0.75** per 1M output tokens
+- **~$0.46/year** for daily generation
 
-✅ **Modern Features**
-- Function calling
-- Streaming responses
-- JSON mode
-- Batch processing
+✅ **OpenAI Architecture**
+- Open-weight model from OpenAI
+- Designed for high reasoning use cases
+- Better at following negative instructions ("don't do X")
+- Supports reasoning effort levels
+
+---
+
+## Previous Model: Llama 4 Scout
+
+**`@cf/meta/llama-4-scout-17b-16e-instruct`** (Replaced Oct 2025)
+
+- 17B parameters with 16-expert MoE
+- Was generating repetitive content patterns
+- Good for cost, but GPT-OSS-120B provides better quality at similar price
 
 ---
 

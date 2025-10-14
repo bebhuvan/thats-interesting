@@ -3,367 +3,438 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import type { Fact } from '../../types/fact';
 import factsData from '../../data/facts.json';
+import { getCategoryColor } from '../../utils/colors';
 
+// In server mode, read directly from params
 const { id } = Astro.params;
+const allFacts: Fact[] = factsData.facts;
+const fact = allFacts.find(f => f.id === id);
 
-// Find the fact by ID
-const facts: Fact[] = factsData.facts;
-const fact = facts.find((f) => f.id === id);
-
-// Ensure fact exists and has required properties
+// 404 if fact not found
 if (!fact) {
   return Astro.redirect('/404');
 }
 
-// Format the date
-const date = fact.generated ? new Date(fact.generated) : new Date();
-const formattedDate = date.toLocaleDateString('en-US', {
+const { title, content, category, subcategory, wonderScore, source, sourceUrl, deepDive, relatedLinks } = fact;
+
+// Get category color for theming
+const categoryColor = getCategoryColor(category);
+
+// Format date
+const factDate = new Date(fact.generated);
+const formattedDate = factDate.toLocaleDateString('en-US', {
   year: 'numeric',
-  month: 'long',
+  month: 'short',
   day: 'numeric'
 });
 ---
 
-<BaseLayout title={`${fact.title} - Wonder Stream`} description={fact.content}>
-  <Header />
+<BaseLayout
+  title={`${title} — That's interesting.`}
+  description={content.substring(0, 160)}
+  type="article"
+>
+  <Header currentPage="facts" />
 
-  <div class="container">
-    <article class="fact-detail">
-      <!-- Breadcrumb -->
-      <nav class="breadcrumb">
-        <a href="/">← Back to stream</a>
-      </nav>
+  <!-- Reading Progress Bar -->
+  <div class="progress-bar" id="progressBar"></div>
 
-      <!-- Metadata -->
-      <div class="meta">
-        <span class="category">{fact.category}</span>
-        {fact.scale && <span class="scale">{fact.scale}</span>}
-        <span class="date">{formattedDate}</span>
-      </div>
+  <main class="article-container" style={`--category-color: ${categoryColor};`}>
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="separator">/</span>
+      <span class="current">{title}</span>
+    </nav>
 
-      <!-- Title -->
-      <h1 class="title">{fact.title}</h1>
+    <!-- Article Header -->
+    <article class="article">
+      <header class="article-header">
+        <div class="article-meta">
+          <a href={`/category/${encodeURIComponent(category)}`} class="category">{category}</a>
+          {subcategory && (
+            <>
+              <span class="separator">·</span>
+              <span class="subcategory">{subcategory}</span>
+            </>
+          )}
+          <span class="separator">·</span>
+          <time datetime={fact.generated}>{formattedDate}</time>
+        </div>
 
-      <!-- Wonder Score -->
-      {fact.wonderScore && (
-        <div class="wonder-score">
-          <span class="label">Wonder Score</span>
-          <div class="score-bar">
-            <div class="score-fill" style={`width: ${fact.wonderScore * 10}%`}></div>
+        <h1 class="article-title">{title}</h1>
+
+        <div class="article-stats">
+          <div class="stat-badge">
+            <span class="stat-label">Wonder Score</span>
+            <span class="stat-value">{wonderScore}<span class="stat-max">/10</span></span>
           </div>
-          <span class="score-value">{fact.wonderScore}/10</span>
         </div>
-      )}
+      </header>
 
-      <!-- Main Content -->
-      <div class="content">
-        {fact.content && fact.content.split('\n\n').filter((p: string) => p.trim()).map((paragraph: string) => (
-          <p class="paragraph">{paragraph}</p>
+      <!-- Article Content -->
+      <div class="article-content">
+        {content.split('\n\n').map((para, index) => (
+          <p class:list={['lead', { 'first-paragraph': index === 0 }]}>{para.trim()}</p>
         ))}
+
+        {deepDive && (
+          <div class="deep-dive">
+            <h2 class="section-title">Deep Dive</h2>
+            <p>{deepDive}</p>
+          </div>
+        )}
+
+        {source && (
+          <div class="source-section">
+            <h2 class="section-title">Source</h2>
+            {sourceUrl ? (
+              <p><a href={sourceUrl} target="_blank" rel="noopener noreferrer" class="source-link">{source}</a></p>
+            ) : (
+              <p>{source}</p>
+            )}
+          </div>
+        )}
+
+        {relatedLinks && relatedLinks.length > 0 && (
+          <div class="related-links">
+            <h2 class="section-title">Learn More</h2>
+            <ul class="links-list">
+              {relatedLinks.map(link => (
+                <li>
+                  <a href={link.url} target="_blank" rel="noopener noreferrer" class="related-link">
+                    {link.title}
+                    <svg class="external-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                      <polyline points="15 3 21 3 21 9"></polyline>
+                      <line x1="10" y1="14" x2="21" y2="3"></line>
+                    </svg>
+                  </a>
+                  {link.description && <p class="link-description">{link.description}</p>}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
 
-      <!-- Deep Dive (Legacy - for old facts) -->
-      {fact.deepDive && (
-        <div class="deep-dive">
-          <h2>Additional Context</h2>
-          <p>{fact.deepDive}</p>
-        </div>
-      )}
-
-      <!-- Source -->
-      {fact.source && (
-        <div class="source">
-          <h3>Source</h3>
-          <p>{fact.source}</p>
-        </div>
-      )}
-
-      <!-- Related Wikipedia Articles (placeholder for AI generation) -->
-      {fact.relatedLinks && fact.relatedLinks.length > 0 && (
-        <div class="related-links">
-          <h3>Related Reading</h3>
-          <ul>
-            {fact.relatedLinks.map((link: any) => (
-              <li>
-                <a href={link.url} target="_blank" rel="noopener noreferrer">
-                  {link.title}
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M10.5 1.5L1.5 10.5M10.5 1.5H4.5M10.5 1.5V7.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-
-      <!-- Share -->
-      <div class="share">
-        <button class="share-btn" onclick="navigator.share ? navigator.share({title: document.title, url: window.location.href}) : navigator.clipboard.writeText(window.location.href).then(() => alert('Link copied!'))">
-          Share this fact
-        </button>
-      </div>
+      <!-- Back to Home -->
+      <footer class="article-footer">
+        <a href="/" class="back-link">← Back to all facts</a>
+      </footer>
     </article>
-  </div>
+  </main>
 </BaseLayout>
 
 <style>
-  .container {
-    max-width: 680px;
+  /* Reading Progress Bar */
+  .progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: var(--category-color, var(--accent));
+    width: 0%;
+    z-index: 1000;
+    transition: width 0.1s ease-out;
+    box-shadow: 0 0 8px var(--category-color, var(--accent));
+  }
+
+  .article-container {
+    max-width: 720px;
     margin: 0 auto;
-    padding: 0 var(--page-gutter) var(--section-gap);
+    padding: 3rem var(--page-gutter) 6rem;
   }
 
-  .fact-detail {
-    padding-bottom: 4rem;
-  }
-
+  /* Breadcrumb */
   .breadcrumb {
-    margin-bottom: 2rem;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--grey-light);
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
   }
 
   .breadcrumb a {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-    color: var(--text-lighter);
+    color: var(--grey-light);
     text-decoration: none;
-    transition: color 0.2s var(--ease);
+    transition: color 0.3s;
   }
 
   .breadcrumb a:hover {
-    color: var(--text);
+    color: var(--accent);
   }
 
-  .meta {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin-bottom: 1.5rem;
+  .breadcrumb .separator {
+    margin: 0 0.5rem;
+    color: var(--grey-lighter);
   }
 
-  .meta span {
-    font-family: var(--font-mono);
-    font-size: 0.625rem;
+  .breadcrumb .current {
+    color: var(--grey);
+  }
+
+  /* Article Header */
+  .article-header {
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 2px solid var(--grey-lighter);
+  }
+
+  .article-meta {
+    font-family: var(--mono);
+    font-size: 0.6875rem;
+    color: var(--grey-light);
     text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--text-lightest);
+    letter-spacing: 0.05em;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
   }
 
   .category {
-    color: var(--text-lighter) !important;
+    color: var(--category-color, var(--accent));
+    font-weight: 700;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
   }
 
-  .title {
-    font-family: var(--font-display);
-    font-size: 2.5rem;
-    font-weight: 500;
-    line-height: 1.25;
-    color: var(--text);
+  .category:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+  }
+
+  .article-meta .separator {
+    color: var(--grey-lighter);
+  }
+
+  .article-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 300;
+    line-height: 1.2;
     letter-spacing: -0.025em;
-    margin: 0 0 2rem;
+    margin-bottom: 2rem;
+    color: var(--black);
+    font-variation-settings: "opsz" 72;
   }
 
-  .wonder-score {
+  .article-stats {
     display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 2.5rem;
-    padding: 1rem 1.25rem;
-    background: var(--bg);
-    border-radius: 4px;
+    gap: 2rem;
   }
 
-  .wonder-score .label {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--text-lighter);
-    white-space: nowrap;
-  }
-
-  .score-bar {
-    flex: 1;
-    height: 4px;
-    background: var(--border);
-    border-radius: 2px;
-    overflow: hidden;
-  }
-
-  .score-fill {
-    height: 100%;
-    background: linear-gradient(90deg, var(--pastel-pink), var(--pastel-lavender));
-    transition: width 0.5s var(--ease);
-  }
-
-  .score-value {
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-    color: var(--text);
-    font-weight: 500;
-  }
-
-  .content {
-    margin-bottom: 3rem;
-  }
-
-  .paragraph {
-    font-size: 1.05rem;
-    line-height: 1.8;
-    color: var(--text-medium);
-    margin: 0 0 1.5rem 0;
-  }
-
-  .paragraph:last-child {
-    margin-bottom: 0;
-  }
-
-  .paragraph:first-child {
-    font-size: 1.15rem;
-    color: var(--text);
-  }
-
-  .deep-dive {
-    margin-bottom: 3rem;
-    padding: 2rem;
-    background: var(--bg);
-    border-radius: 4px;
-    border-left: 3px solid var(--pastel-mint);
-  }
-
-  .deep-dive h2 {
-    font-family: var(--font-display);
-    font-size: 1.25rem;
-    font-weight: 500;
-    margin: 0 0 1rem;
-    color: var(--text);
-    letter-spacing: -0.02em;
-  }
-
-  .deep-dive p {
-    font-size: 1rem;
-    line-height: 1.7;
-    color: var(--text-medium);
-    margin: 0;
-  }
-
-  .source {
-    margin-bottom: 3rem;
-    padding: 1.5rem;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-  }
-
-  .source h3 {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--text-lighter);
-    margin: 0 0 0.75rem;
-  }
-
-  .source p {
-    font-size: 0.9rem;
-    line-height: 1.6;
-    color: var(--text-light);
-    margin: 0;
-  }
-
-  .related-links {
-    margin-bottom: 3rem;
-  }
-
-  .related-links h3 {
-    font-family: var(--font-display);
-    font-size: 1.25rem;
-    font-weight: 500;
-    margin: 0 0 1.25rem;
-    color: var(--text);
-    letter-spacing: -0.02em;
-  }
-
-  .related-links ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+  .stat-badge {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
+    background: color-mix(in srgb, var(--category-color, var(--accent)) 10%, transparent);
+    border-radius: 4px;
+    border: 2px solid color-mix(in srgb, var(--category-color, var(--accent)) 20%, transparent);
   }
 
-  .related-links li {
-    border-left: 2px solid var(--border);
-    padding-left: 1rem;
-    transition: border-color 0.2s var(--ease);
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--grey);
+    font-weight: 400;
   }
 
-  .related-links li:hover {
-    border-left-color: var(--pastel-sky);
+  .stat-value {
+    font-family: var(--mono);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--category-color, var(--accent));
+    line-height: 1;
   }
 
-  .related-links a {
-    font-size: 0.95rem;
-    color: var(--text);
+  .stat-max {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--grey-light);
+  }
+
+  /* Article Content */
+  .article-content {
+    font-family: var(--body-serif);
+    font-size: 1.1875rem;
+    line-height: 1.8;
+    color: #2d2d2d;
+    letter-spacing: 0.002em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  .lead {
+    font-size: 1.1875rem;
+    line-height: 1.8;
+    margin-bottom: 1.75rem;
+    letter-spacing: 0.002em;
+  }
+
+  .lead + .lead {
+    margin-top: 0;
+  }
+
+  /* Drop Cap on First Paragraph */
+  .first-paragraph::first-letter {
+    font-family: var(--serif);
+    font-size: 4.5rem;
+    line-height: 0.8;
+    float: left;
+    margin: 0.1em 0.15em 0 0;
+    color: var(--category-color, var(--accent));
+    font-weight: 400;
+    font-variation-settings: "opsz" 144;
+  }
+
+  .deep-dive,
+  .source-section,
+  .related-links {
+    margin-top: 3rem;
+    padding-top: 3rem;
+    border-top: 2px solid var(--grey-lighter);
+  }
+
+  .section-title {
+    font-family: var(--mono);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--category-color, var(--accent));
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+
+  .deep-dive p,
+  .source-section p {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: var(--grey);
+  }
+
+  .source-link {
+    color: var(--category-color, var(--accent));
     text-decoration: none;
+    border-bottom: 2px solid color-mix(in srgb, var(--category-color, var(--accent)) 20%, transparent);
+    transition: border-color 0.3s;
+  }
+
+  .source-link:hover {
+    border-bottom-color: var(--category-color, var(--accent));
+  }
+
+  /* Related Links */
+  .links-list {
+    list-style: none;
     display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .related-link {
+    font-family: var(--sans);
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--black);
+    text-decoration: none;
+    display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    transition: color 0.2s var(--ease);
+    transition: color 0.3s;
   }
 
-  .related-links a:hover {
-    color: var(--text-light);
+  .related-link:hover {
+    color: var(--category-color, var(--accent));
   }
 
-  .related-links svg {
-    opacity: 0.4;
-    transition: opacity 0.2s var(--ease);
+  .external-icon {
+    opacity: 0.5;
+    transition: opacity 0.3s;
   }
 
-  .related-links a:hover svg {
-    opacity: 0.8;
+  .related-link:hover .external-icon {
+    opacity: 1;
   }
 
-  .share {
+  .link-description {
+    font-size: 0.9375rem;
+    color: var(--grey);
+    margin-top: 0.5rem;
+  }
+
+  /* Article Footer */
+  .article-footer {
     margin-top: 4rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--border);
+    padding-top: 3rem;
+    border-top: 2px solid var(--grey-lighter);
   }
 
-  .share-btn {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
+  .back-link {
+    font-family: var(--mono);
+    font-size: 0.875rem;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
-    padding: 0.85rem 1.5rem;
-    background: var(--text);
-    color: var(--surface);
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.2s var(--ease);
+    letter-spacing: 0.05em;
+    color: var(--grey);
+    text-decoration: none;
+    transition: color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
-  .share-btn:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  .back-link:hover {
+    color: var(--category-color, var(--accent));
   }
 
-  @media (max-width: 640px) {
-    .container {
-      padding: 0 1.25rem 3rem;
+  /* Responsive */
+  @media (max-width: 768px) {
+    .article-container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
     }
 
-    .title {
-      font-size: 1.85rem;
+    .article-title {
+      font-size: 2rem;
     }
 
-    .main-text {
-      font-size: 1.05rem;
+    .article-content {
+      font-size: 1.0625rem;
+    }
+
+    .lead {
+      font-size: 1.0625rem;
     }
   }
 </style>
+
+<script>
+  // Reading Progress Bar
+  function updateProgressBar() {
+    const progressBar = document.getElementById('progressBar');
+    if (!progressBar) return;
+
+    const windowHeight = window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight - windowHeight;
+    const scrolled = window.scrollY;
+    const progress = (scrolled / documentHeight) * 100;
+
+    progressBar.style.width = `${Math.min(progress, 100)}%`;
+  }
+
+  // Update on scroll
+  window.addEventListener('scroll', updateProgressBar, { passive: true });
+
+  // Update on load
+  window.addEventListener('load', updateProgressBar);
+
+  // Update on resize
+  window.addEventListener('resize', updateProgressBar, { passive: true });
+</script>

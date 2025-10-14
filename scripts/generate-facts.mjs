@@ -37,10 +37,10 @@ if (!CF_ACCOUNT_ID || !CF_API_TOKEN) {
 }
 
 // Best model for long-form article generation:
-// - llama-4-scout-17b-16e-instruct: 131K context, multimodal, 16 experts, $0.85/M output
-// - llama-3.3-70b-instruct-fp8-fast: 24K context, faster, 70B params, $2.25/M output
-// Llama 4 Scout is MUCH cheaper and has huge context window!
-const AI_MODEL = '@cf/meta/llama-4-scout-17b-16e-instruct';
+// - GPT-OSS-120B: 120B params, 128K context, same cost as Llama 4 Scout, better variation
+// - Much better creative variation and writing diversity
+// - OpenAI architecture with better instruction following
+const AI_MODEL = '@cf/openai/gpt-oss-120b';
 const AI_API_URL = `https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/ai/run/${AI_MODEL}`;
 
 function selectRandomCategory() {
@@ -48,10 +48,10 @@ function selectRandomCategory() {
 }
 
 function generatePrompt(category) {
-  return `You are a world-class science communicator writing engaging, in-depth articles. Generate 2 fascinating, scientifically accurate articles about ${category}.
+  return `You are a world-class science communicator writing engaging, in-depth articles. Generate 1 fascinating, scientifically accurate article about ${category}.
 
 REQUIREMENTS:
-- Each article must be 500-600 words
+- Article must be 500-600 words
 - Verifiable and accurate information
 - Include unexpected connections or scale comparisons
 - Focus on facts that shift perspective
@@ -105,7 +105,10 @@ Return ONLY the JSON array, no other text.`;
 async function generateFactsWithAI(category) {
   const prompt = generatePrompt(category);
 
-  console.log(`🤖 Generating 2 facts for category: ${category}`);
+  console.log(`🤖 Generating fact for category: ${category}`);
+
+  // GPT-OSS uses 'input' format instead of 'messages'
+  const systemPrompt = "You are an expert science communicator who writes engaging, in-depth articles. Always respond with valid JSON only. Vary your writing style dramatically between facts - never repeat the same narrative structure or opening phrases.\n\n";
 
   const response = await fetch(AI_API_URL, {
     method: 'POST',
@@ -114,19 +117,10 @@ async function generateFactsWithAI(category) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      messages: [
-        {
-          role: 'system',
-          content: 'You are an expert science communicator who writes engaging, in-depth articles. Always respond with valid JSON only.'
-        },
-        {
-          role: 'user',
-          content: prompt
-        }
-      ],
-      max_tokens: 4096,  // Increased for longer articles
-      temperature: 0.8,
-      top_p: 0.9
+      input: systemPrompt + prompt,
+      reasoning: {
+        effort: "medium"
+      }
     })
   });
 
@@ -136,27 +130,20 @@ async function generateFactsWithAI(category) {
   }
 
   const data = await response.json();
-  const content = data.result?.response || data.result || '';
 
-  // Handle if content is already an object
-  if (typeof content === 'object') {
-    const facts = Array.isArray(content) ? content : [content];
-    return facts.map(fact => ({
-      id: fact.id.toLowerCase().replace(/[^a-z0-9-]/g, '-'),
-      title: fact.title.trim(),
-      summary: fact.summary?.trim(),
-      content: fact.content.trim(),
-      category: fact.category.trim(),
-      subcategory: fact.subcategory?.trim(),
-      scale: fact.scale,
-      wonderScore: Math.min(10, Math.max(1, fact.wonderScore || 7)),
-      source: fact.source?.trim(),
-      relatedLinks: fact.wikiTopics ? fact.wikiTopics.map(topic => ({
-        title: topic,
-        url: `https://en.wikipedia.org/wiki/${encodeURIComponent(topic.replace(/ /g, '_'))}`
-      })) : [],
-      generated: new Date().toISOString()
-    }));
+  // GPT-OSS returns response in output array with message type
+  let content = '';
+
+  if (data.result?.output && Array.isArray(data.result.output)) {
+    // Find the message type output (GPT-OSS format)
+    const messageOutput = data.result.output.find(item => item.type === 'message');
+    if (messageOutput && messageOutput.content && Array.isArray(messageOutput.content)) {
+      // Content is an array of content blocks, get the text from first block
+      content = messageOutput.content[0]?.text || '';
+    }
+  } else {
+    // Fallback for other formats
+    content = data.result?.response || data.result || '';
   }
 
   // Extract JSON from string response
@@ -177,7 +164,7 @@ async function generateFactsWithAI(category) {
     category: fact.category.trim(),
     subcategory: fact.subcategory?.trim(),
     scale: fact.scale,
-    wonderScore: Math.min(10, Math.max(1, fact.wonderScore || 7)),
+    wonderScore: Math.min(10, Math.max(1, fact.wonderScore || 5)),
     source: fact.source?.trim(),
     relatedLinks: fact.wikiTopics ? fact.wikiTopics.map(topic => ({
       title: topic,
@@ -197,11 +184,21 @@ async function main() {
 
     console.log(`📚 Current facts: ${existingFacts.length}`);
 
-    // Select random category
-    const category = selectRandomCategory();
+    // Select TWO different random categories for diversity
+    const category1 = selectRandomCategory();
+    let category2 = selectRandomCategory();
+    // Ensure we don't pick the same category twice
+    while (category2 === category1) {
+      category2 = selectRandomCategory();
+    }
 
-    // Generate new facts
-    const newFacts = await generateFactsWithAI(category);
+    // Generate 1 fact from each category for maximum diversity
+    console.log(`🎯 Generating facts from: ${category1} and ${category2}`);
+    const facts1 = await generateFactsWithAI(category1);
+    const facts2 = await generateFactsWithAI(category2);
+
+    // Take 1 fact from each (in case AI generates 2 per category)
+    const newFacts = [facts1[0], facts2[0]];
     console.log(`✅ Generated ${newFacts.length} new facts`);
 
     // Add to facts list (prepend so newest are first)

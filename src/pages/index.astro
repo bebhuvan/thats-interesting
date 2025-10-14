@@ -8,323 +8,262 @@ import factsData from '../data/facts.json';
 // Load facts from JSON file
 const allFacts: Fact[] = factsData.facts;
 
-// Show the most recent 10 facts on homepage
-const sampleFacts = allFacts.slice(0, 10);
+// Show the most recent facts on homepage
+const sampleFacts = allFacts.slice(0, 12);
 
+// Calculate dynamic stats
+const uniqueCategories = new Set(allFacts.map(f => f.category)).size;
+const avgWonderScore = allFacts.length > 0
+  ? (allFacts.reduce((sum, f) => sum + f.wonderScore, 0) / allFacts.length).toFixed(1)
+  : '0.0';
 ---
 
 <BaseLayout title="That's interesting.">
   <Header currentPage="facts" />
 
-  <div class="container">
-    <!-- Facts Container -->
-    <main class="facts-container reading-mode" id="factsContainer">
+  <main class="main-container">
+    <!-- Hero Section -->
+    <section class="hero">
+      <span class="hero-label">Daily Discoveries Since 2024</span>
+      <h1>
+        The <span class="highlight">"ooh, that's interesting"</span> moment.<br>
+        <span class="underline">Delivered daily.</span>
+      </h1>
+      <p class="hero-description">
+        We hunt down facts that rewire your perspective—the kind that make you stop scrolling
+        and start thinking. From quantum mechanics to medieval art, if it shifts how you see the world,
+        it belongs here.
+      </p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-number">{allFacts.length}</div>
+          <div class="stat-label">Facts Published</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">{uniqueCategories}</div>
+          <div class="stat-label">{uniqueCategories === 1 ? 'Category' : 'Categories'}</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number"><span class="accent">{avgWonderScore}</span>/10</div>
+          <div class="stat-label">Avg Wonder Score</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="divider"></div>
+
+    <!-- Facts Grid -->
+    <div class="facts-grid">
       {sampleFacts.map((fact, index) => (
-        <FactCard fact={fact} mode="reading" featured={index === 0} />
+        <FactCard fact={fact} featured={index === 0} />
       ))}
-    </main>
-  </div>
-
-  <!-- Mode Toggle -->
-  <div class="mode-toggle">
-    <button class="mode-btn active" data-mode="reading">Reading</button>
-    <button class="mode-btn" data-mode="explore">Explore</button>
-  </div>
-
-  <!-- Loading indicator -->
-  <div class="loading-overlay" id="loadingOverlay">
-    <div class="loading-spinner"></div>
-    <p class="loading-text">Consulting ancient texts...</p>
-  </div>
+    </div>
+  </main>
 </BaseLayout>
 
 <style>
-  .container {
+  .main-container {
     max-width: var(--content-width);
     margin: 0 auto;
-    padding: 0 var(--page-gutter) 5rem;
+    padding: 0 var(--page-gutter) var(--space-3xl);
     position: relative;
   }
 
-  /* Facts Container */
-  .facts-container {
-    margin-bottom: 4rem;
+  /* Hero Section */
+  .hero {
+    padding: var(--space-3xl) 0 var(--space-xl);
   }
 
-  .facts-container.reading-mode {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  /* Asymmetric spacing - magazine style */
-  .facts-container.reading-mode .fact:nth-child(3n+1) {
-    margin-left: 0;
-    max-width: 95%;
-  }
-
-  .facts-container.reading-mode .fact:nth-child(3n+2) {
-    margin-left: auto;
-    max-width: 92%;
-  }
-
-  .facts-container.reading-mode .fact:nth-child(3n) {
-    margin-left: 0;
-    max-width: 100%;
-  }
-
-  .facts-container.explore-mode {
-    min-height: 180vh;
-    position: relative;
-  }
-
-  /* Mode Toggle */
-  .mode-toggle {
-    position: fixed;
-    bottom: 2rem;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 0;
-    z-index: 1000;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 3px;
-    overflow: hidden;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
-  }
-
-  .mode-btn {
-    padding: 0.75rem 2rem;
-    background: transparent;
-    border: none;
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    cursor: pointer;
+  .hero-label {
+    font-family: var(--mono);
+    font-size: 0.6875rem;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--text-lighter);
-    border-right: 1px solid var(--border);
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    font-weight: 400;
+    margin-bottom: var(--space-lg);
+    display: inline-block;
+    padding: var(--space-xs) var(--space-sm);
+    background: var(--accent-light);
+    border-radius: 2px;
+    transition: transform 0.3s var(--ease-spring);
+    animation: slideIn 0.8s ease;
   }
 
-  .mode-btn:last-child {
-    border-right: none;
+  .hero-label:hover {
+    transform: scale(1.05) rotate(-2deg);
   }
 
-  .mode-btn.active {
-    background: var(--text);
-    color: var(--surface);
+  @keyframes slideIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
-  /* Loading overlay */
-  .loading-overlay {
-    position: fixed;
-    top: 0;
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.75rem, 7vw, 5rem);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    margin-bottom: var(--space-lg);
+    max-width: 900px;
+    font-variation-settings: "opsz" 144;
+  }
+
+  .hero h1 .highlight {
+    background: linear-gradient(180deg, transparent 60%, var(--accent-light) 60%);
+    font-style: italic;
+  }
+
+  .hero h1 .underline {
+    position: relative;
+    display: inline-block;
+  }
+
+  .hero h1 .underline::after {
+    content: '';
+    position: absolute;
+    bottom: 0.1em;
     left: 0;
     right: 0;
-    bottom: 0;
-    background: rgba(250, 250, 250, 0.95);
-    backdrop-filter: blur(8px);
+    height: 0.15em;
+    background: var(--accent);
+    opacity: 0.3;
+    transform: skewY(-1deg);
+  }
+
+  .hero-description {
+    font-family: var(--sans);
+    font-size: 1.125rem;
+    line-height: 1.65;
+    color: var(--grey);
+    max-width: 680px;
+    margin-bottom: var(--space-xl);
+    font-weight: 400;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: var(--space-xl);
+    flex-wrap: wrap;
+  }
+
+  .stat-item {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 2000;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.3s ease;
+    gap: 0.25rem;
   }
 
-  .loading-overlay.active {
-    opacity: 1;
-    pointer-events: all;
+  .stat-number {
+    font-family: var(--mono);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--black);
+    line-height: 1;
+    letter-spacing: -0.025em;
+    font-feature-settings: "tnum" 1;
+    transition: transform 0.3s ease;
   }
 
-  .loading-spinner {
-    width: 50px;
-    height: 50px;
-    border: 3px solid var(--border);
-    border-top-color: var(--accent);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
+  .stat-item:hover .stat-number {
+    transform: scale(1.05);
   }
 
-  @keyframes spin {
-    to { transform: rotate(360deg); }
+  .stat-number .accent {
+    color: var(--accent);
+    display: inline-block;
+    animation: pulse 2s ease-in-out infinite;
   }
 
-  .loading-text {
-    margin-top: 1.5rem;
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
-    color: var(--text-light);
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
     letter-spacing: 0.05em;
+    color: var(--grey-light);
+    font-weight: 400;
   }
 
-  @media (max-width: 640px) {
-    .container {
-      padding: 0 1.25rem;
+  /* Divider */
+  .divider {
+    height: 2px;
+    background: var(--black);
+    margin: var(--space-xl) 0 var(--space-2xl);
+    position: relative;
+  }
+
+  .divider::after {
+    content: '✦';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--off-white);
+    padding: 0 var(--space-sm);
+    font-size: 0.875rem;
+    color: var(--accent);
+    animation: rotate 15s linear infinite;
+  }
+
+  @keyframes rotate {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+  }
+
+  /* Facts Grid - Bento Box Style */
+  .facts-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--space-lg);
+  }
+
+  @media (max-width: 1024px) {
+    .facts-grid {
+      grid-template-columns: 1fr;
     }
 
-    .mode-toggle {
-      bottom: 1rem;
-      left: 1rem;
-      transform: none;
-    }
-
-    .mode-btn {
-      padding: 0.65rem 1.5rem;
+    .hero-stats {
+      gap: var(--space-lg);
     }
   }
 
-  @media (max-width: 480px) {
-    .mode-toggle {
+  @media (max-width: 768px) {
+    .main-container {
+      padding-left: var(--space-md);
+      padding-right: var(--space-md);
+    }
+
+    .hero {
+      padding: var(--space-2xl) 0 var(--space-xl);
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+
+    .hero-description {
+      font-size: 1.0625rem;
+    }
+
+    .hero-stats {
+      gap: var(--space-lg);
       flex-direction: column;
     }
 
-    .mode-btn {
-      border-right: none;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .mode-btn:last-child {
-      border-bottom: none;
+    .divider {
+      margin: var(--space-xl) 0 var(--space-lg);
     }
   }
 </style>
-
-<script>
-  let currentMode: 'reading' | 'explore' = 'reading';
-
-  // Mode switching
-  document.querySelectorAll('.mode-btn').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const target = e.target as HTMLButtonElement;
-      const mode = target.dataset.mode as 'reading' | 'explore';
-
-      currentMode = mode;
-
-      document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
-      target.classList.add('active');
-
-      const container = document.getElementById('factsContainer');
-      const facts = document.querySelectorAll('.fact');
-
-      if (container) {
-        container.className = `facts-container ${mode}-mode`;
-
-        if (mode === 'explore') {
-          arrangeExploreMode();
-        } else {
-          // Reset reading mode styles
-          facts.forEach(fact => {
-            const element = fact as HTMLElement;
-            element.style.position = '';
-            element.style.top = '';
-            element.style.left = '';
-            element.style.right = '';
-            element.style.transform = '';
-            element.style.transition = '';
-            element.style.cursor = '';
-            element.style.zIndex = '';
-          });
-        }
-      }
-    });
-  });
-
-  // Drag and drop state
-  let isDragging = false;
-  let currentDragElement: HTMLElement | null = null;
-  let dragOffset = { x: 0, y: 0 };
-
-  // Arrange facts in explore mode
-  function arrangeExploreMode() {
-    const facts = document.querySelectorAll('.fact');
-    const positions = [
-      { top: '5%', left: '8%', rotation: '-1.5deg' },
-      { top: '25%', right: '12%', rotation: '1.2deg' },
-      { top: '45%', left: '20%', rotation: '-0.8deg' },
-      { top: '65%', right: '8%', rotation: '1.8deg' },
-      { top: '85%', left: '12%', rotation: '-1.2deg' },
-      { top: '105%', right: '18%', rotation: '0.8deg' }
-    ];
-
-    facts.forEach((fact, index) => {
-      const element = fact as HTMLElement;
-      const pos = positions[index] || positions[0];
-
-      element.style.position = 'absolute';
-      element.style.top = pos.top;
-      element.style.left = pos.left || 'auto';
-      element.style.right = pos.right || 'auto';
-      element.style.transform = `rotate(${pos.rotation})`;
-      element.style.transition = 'all 1s var(--ease-smooth)';
-      element.style.cursor = 'grab';
-
-      // Add drag listeners
-      element.addEventListener('mousedown', startDrag);
-      element.addEventListener('touchstart', startDrag, { passive: false });
-    });
-  }
-
-  function startDrag(e: MouseEvent | TouchEvent) {
-    if (currentMode !== 'explore') return;
-
-    // Don't drag if clicking on details/summary
-    const target = e.target as HTMLElement;
-    if (target.tagName === 'SUMMARY' || target.tagName === 'DETAILS') return;
-
-    isDragging = true;
-    currentDragElement = e.currentTarget as HTMLElement;
-    currentDragElement.style.cursor = 'grabbing';
-    currentDragElement.style.zIndex = '1000';
-    currentDragElement.style.transition = 'none';
-
-    const rect = currentDragElement.getBoundingClientRect();
-    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
-    const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
-
-    dragOffset.x = clientX - rect.left;
-    dragOffset.y = clientY - rect.top;
-
-    e.preventDefault();
-  }
-
-  function drag(e: MouseEvent | TouchEvent) {
-    if (!isDragging || !currentDragElement) return;
-
-    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
-    const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY;
-
-    const container = document.getElementById('factsContainer');
-    if (!container) return;
-
-    const containerRect = container.getBoundingClientRect();
-    const x = ((clientX - containerRect.left - dragOffset.x) / containerRect.width) * 100;
-    const y = ((clientY - containerRect.top - dragOffset.y) / containerRect.height) * 100;
-
-    currentDragElement.style.left = Math.max(0, Math.min(75, x)) + '%';
-    currentDragElement.style.top = Math.max(0, Math.min(90, y)) + '%';
-    currentDragElement.style.right = 'auto';
-
-    e.preventDefault();
-  }
-
-  function endDrag() {
-    if (!isDragging || !currentDragElement) return;
-
-    isDragging = false;
-    currentDragElement.style.cursor = 'grab';
-    currentDragElement.style.zIndex = '';
-    currentDragElement.style.transition = 'all 0.3s ease';
-    currentDragElement = null;
-  }
-
-  // Add global drag listeners
-  document.addEventListener('mousemove', drag);
-  document.addEventListener('mouseup', endDrag);
-  document.addEventListener('touchmove', drag, { passive: false });
-  document.addEventListener('touchend', endDrag);
-
-</script>

@@ -71,17 +71,40 @@ export class QualityScorer {
   }
 
   static validateFact(fact: any): boolean {
-    return (
-      fact &&
-      typeof fact.title === 'string' &&
-      typeof fact.content === 'string' &&
-      fact.title.length >= 10 &&
-      fact.title.length <= 100 &&
-      fact.content.length >= 50 &&
-      fact.content.length <= 500 &&
-      fact.category &&
-      fact.id
-    );
+    // Basic structure validation
+    if (!fact || typeof fact.title !== 'string' || typeof fact.content !== 'string') {
+      return false;
+    }
+
+    // Title validation
+    if (fact.title.length < 10 || fact.title.length > 100) {
+      return false;
+    }
+
+    // Content validation - minimum 150 chars for meaningful content
+    if (fact.content.length < 150 || fact.content.length > 800) {
+      return false;
+    }
+
+    // Required fields
+    if (!fact.category || !fact.id) {
+      return false;
+    }
+
+    // Source validation - if present, must be meaningful
+    if (fact.source && typeof fact.source === 'string') {
+      // Reject generic sources
+      const genericSources = ['nasa', 'scientists', 'researchers', 'study', 'research'];
+      const sourceLower = fact.source.toLowerCase();
+      const isGeneric = genericSources.some(generic =>
+        sourceLower === generic || sourceLower === `${generic} say`
+      );
+      if (isGeneric && fact.source.length < 20) {
+        return false;
+      }
+    }
+
+    return true;
   }
 
   static filterHighQuality(facts: Fact[], threshold = 6): Fact[] {

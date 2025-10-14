@@ -15,6 +15,7 @@ export default defineConfig({
       include: ['/api/*', '/fact/*', '/about', '/archive']
     }
   }),
+  site: 'https://wonder-stream.pages.dev', // Update this with your actual domain when deployed
   vite: {
     build: {
       minify: 'esbuild'

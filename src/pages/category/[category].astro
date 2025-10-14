@@ -1,0 +1,156 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import FactCard from '../../components/FactCard.astro';
+import type { Fact } from '../../types/fact';
+import factsData from '../../data/facts.json';
+
+// In server mode, read directly from params
+const { category } = Astro.params;
+const allFacts: Fact[] = factsData.facts;
+
+// Filter facts by category (case-insensitive)
+const categoryFacts = allFacts.filter(
+  f => f.category.toLowerCase() === category?.toLowerCase()
+);
+
+// 404 if no facts found
+if (categoryFacts.length === 0) {
+  return Astro.redirect('/404');
+}
+
+// Get the properly capitalized category name from the first fact
+const categoryName = categoryFacts[0].category;
+---
+
+<BaseLayout
+  title={`${categoryName} — That's interesting.`}
+  description={`Explore ${categoryFacts.length} fascinating facts about ${categoryName}`}
+>
+  <Header currentPage="facts" />
+
+  <main class="category-container">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span class="separator">/</span>
+      <a href="/archive">Archive</a>
+      <span class="separator">/</span>
+      <span class="current">{categoryName}</span>
+    </nav>
+
+    <!-- Category Header -->
+    <header class="category-header">
+      <h1 class="category-title">{categoryName}</h1>
+      <p class="category-count">{categoryFacts.length} {categoryFacts.length === 1 ? 'article' : 'articles'}</p>
+    </header>
+
+    <!-- Facts Grid -->
+    <div class="facts-grid">
+      {categoryFacts.map((fact) => (
+        <FactCard fact={fact} />
+      ))}
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .category-container {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 3rem var(--page-gutter) 6rem;
+  }
+
+  /* Breadcrumb */
+  .breadcrumb {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--grey-light);
+    margin-bottom: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .breadcrumb a {
+    color: var(--grey-light);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .breadcrumb a:hover {
+    color: var(--accent);
+  }
+
+  .breadcrumb .separator {
+    margin: 0 0.5rem;
+    color: var(--grey-lighter);
+  }
+
+  .breadcrumb .current {
+    color: var(--grey);
+  }
+
+  /* Category Header */
+  .category-header {
+    margin-bottom: 4rem;
+    padding-bottom: 2rem;
+    border-bottom: 2px solid var(--black);
+    position: relative;
+  }
+
+  .category-header::after {
+    content: '✦';
+    position: absolute;
+    bottom: -0.75rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--off-white);
+    padding: 0 1rem;
+    font-size: 0.875rem;
+    color: var(--accent);
+  }
+
+  .category-title {
+    font-family: var(--serif);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 300;
+    line-height: 1.2;
+    letter-spacing: -0.025em;
+    margin-bottom: 1rem;
+    color: var(--black);
+    font-variation-settings: "opsz" 72;
+  }
+
+  .category-count {
+    font-family: var(--mono);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--accent);
+    font-weight: 700;
+  }
+
+  /* Facts Grid */
+  .facts-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--space-lg);
+  }
+
+  @media (max-width: 1024px) {
+    .facts-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .category-container {
+      padding-left: var(--space-md);
+      padding-right: var(--space-md);
+    }
+
+    .category-title {
+      font-size: 2.5rem;
+    }
+  }
+</style>

@@ -1,0 +1,137 @@
+---
+export interface Props {
+  count?: number;
+}
+
+const { count = 6 } = Astro.props;
+---
+
+<div class="skeleton-grid">
+  {Array.from({ length: count }).map((_, i) => (
+    <div class="skeleton-card" data-index={i}>
+      <div class="skeleton-meta"></div>
+      <div class="skeleton-title"></div>
+      <div class="skeleton-title short"></div>
+      <div class="skeleton-excerpt"></div>
+      <div class="skeleton-excerpt"></div>
+      <div class="skeleton-excerpt short"></div>
+      <div class="skeleton-footer">
+        <div class="skeleton-score"></div>
+        <div class="skeleton-link"></div>
+      </div>
+    </div>
+  ))}
+</div>
+
+<style>
+  .skeleton-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2rem;
+  }
+
+  .skeleton-card {
+    background: var(--white);
+    padding: 2.5rem;
+    border: 2px solid var(--grey-lighter);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .skeleton-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background: var(--grey-lighter);
+  }
+
+  /* Match fact card grid spans */
+  .skeleton-card[data-index="0"] { grid-column: span 12; }
+  .skeleton-card[data-index="1"] { grid-column: span 8; }
+  .skeleton-card[data-index="2"] { grid-column: span 4; }
+  .skeleton-card[data-index="3"] { grid-column: span 5; }
+  .skeleton-card[data-index="4"] { grid-column: span 7; }
+  .skeleton-card[data-index="5"] { grid-column: span 12; }
+
+  .skeleton-meta,
+  .skeleton-title,
+  .skeleton-excerpt,
+  .skeleton-score,
+  .skeleton-link {
+    background: var(--grey-lighter);
+    border-radius: 4px;
+    height: 1rem;
+  }
+
+  .skeleton-meta {
+    width: 40%;
+    height: 0.75rem;
+  }
+
+  .skeleton-title {
+    height: 1.5rem;
+    width: 90%;
+  }
+
+  .skeleton-title.short {
+    width: 60%;
+  }
+
+  .skeleton-excerpt {
+    height: 1rem;
+    width: 100%;
+  }
+
+  .skeleton-excerpt.short {
+    width: 70%;
+  }
+
+  .skeleton-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    margin-top: auto;
+    border-top: 2px solid var(--grey-lighter);
+  }
+
+  .skeleton-score {
+    width: 80px;
+  }
+
+  .skeleton-link {
+    width: 100px;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .skeleton-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .skeleton-card,
+    .skeleton-card[data-index] {
+      grid-column: span 1 !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .skeleton-card {
+      padding: 2rem;
+    }
+  }
+</style>

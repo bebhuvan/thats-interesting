@@ -1,68 +1,156 @@
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@9..144,200..900;1,9..144,200..900&family=Work+Sans:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&family=Charter:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+/* Prevent font loading shifts */
+@font-face {
+  font-family: 'Fraunces';
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Work Sans';
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Space Mono';
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Charter';
+  font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 :root {
+  /* Colors - Refined Modern */
+  --white: #ffffff;
+  --off-white: #f7f6f4;
+  --black: #121212;
+  --grey: #595959;
+  --grey-light: #a8a8a8;
+  --grey-lighter: #e3e1dd;
+  --accent: #ff6b35;
+  --accent-light: #fff5f0;
+  --accent-dark: #ff5722;
+  --blue: #457b9d;
+  --yellow: #f4a261;
+  --green: #2a9d8f;
+  --purple: #9b5de5;
+  --cyan: #00b4d8;
+  --red: #e63946;
+
   /* Typography */
-  --font-display: 'Playfair Display', Georgia, serif;
-  --font-body: 'Crimson Text', Georgia, serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  --serif: 'Fraunces', Georgia, serif;
+  --body-serif: 'Charter', Georgia, serif;
+  --sans: 'Work Sans', -apple-system, system-ui, sans-serif;
+  --mono: 'Space Mono', 'Courier New', monospace;
 
-  /* Colors - Minimal & Elegant */
-  --text: #1a1a1a;
-  --text-medium: #4a4a4a;
-  --text-light: #6b6b6b;
-  --text-lighter: #a0a0a0;
-  --text-lightest: #d4d4d4;
+  /* Legacy aliases for backwards compatibility */
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Work Sans', -apple-system, system-ui, sans-serif;
+  --font-mono: 'Space Mono', 'Courier New', monospace;
 
-  --bg: #fafafa;
-  --surface: #ffffff;
-  --border: rgba(0, 0, 0, 0.05);
-  --border-light: rgba(0, 0, 0, 0.03);
+  --text: var(--black);
+  --text-medium: var(--grey);
+  --text-light: var(--grey-light);
+  --text-lighter: var(--grey-light);
+  --text-lightest: var(--grey-lighter);
 
-  /* Muted, faded accents - slightly brighter */
-  --pastel-pink: #e0c8d4;
-  --pastel-lavender: #d4cce4;
-  --pastel-mint: #c8dcd0;
-  --pastel-peach: #e4d4c8;
-  --pastel-sky: #c8dce8;
-  --pastel-coral: #dcc8d0;
+  --bg: var(--off-white);
+  --surface: var(--white);
+  --border: var(--grey-lighter);
+  --border-light: var(--grey-lighter);
 
-  /* Layout - More generous spacing */
-  --content-width: 720px;
+  /* Layout - 8px-based scale */
+  --content-width: 1200px;
   --page-gutter: 3rem;
-  --section-gap: 5rem;
-  --card-gap: 2.5rem;
+
+  /* Spacing scale (8px base) */
+  --space-xs: 0.5rem;   /* 8px */
+  --space-sm: 1rem;     /* 16px */
+  --space-md: 1.5rem;   /* 24px */
+  --space-lg: 2rem;     /* 32px */
+  --space-xl: 3rem;     /* 48px */
+  --space-2xl: 4rem;    /* 64px */
+  --space-3xl: 6rem;    /* 96px */
+
+  /* Legacy aliases */
+  --section-gap: var(--space-xl);
+  --card-gap: var(--space-lg);
 
   /* Animation */
   --ease: cubic-bezier(0.23, 1, 0.32, 1);
-  --ease-spring: cubic-bezier(0.68, -0.55, 0.265, 1.55);
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
-  margin: 0;
-  font-family: var(--font-body);
-  font-feature-settings: "liga" 1, "kern" 1;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.75;
+  font-family: var(--serif);
+  background: var(--off-white);
+  color: var(--black);
+  line-height: 1.65;
+  font-size: 19px;
+  font-weight: 400;
+  cursor: default;
   overflow-x: hidden;
   min-height: 100vh;
-  font-size: 18px;
 }
 
-/* Removed background pattern for cleaner look */
+/* Playful cursor */
+a, button {
+  cursor: pointer;
+}
+
+/* Floating shapes in background */
+body::before {
+  content: '';
+  position: fixed;
+  top: 10%;
+  right: 5%;
+  width: 200px;
+  height: 200px;
+  background: var(--accent-light);
+  border-radius: 50%;
+  opacity: 0.3;
+  animation: float 20s ease-in-out infinite;
+  z-index: -1;
+  pointer-events: none;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  bottom: 15%;
+  left: 8%;
+  width: 150px;
+  height: 150px;
+  background: linear-gradient(135deg, var(--accent-light), rgba(69, 123, 157, 0.1));
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  opacity: 0.3;
+  animation: float 25s ease-in-out infinite reverse;
+  z-index: -1;
+  pointer-events: none;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-30px) rotate(10deg);
+  }
+}
 
 :focus-visible {
   outline: 2px solid var(--accent);
@@ -83,5 +171,16 @@ body {
   :root {
     --border: rgba(0, 0, 0, 0.2);
     --text-lighter: #555;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 17px;
+  }
+
+  body::before,
+  body::after {
+    display: none;
   }
 }
