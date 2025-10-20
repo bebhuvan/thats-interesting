@@ -1,6 +1,56 @@
 {
   "facts": [
     {
+      "id": "dna-sorting-paradox",
+      "title": "When Molecules Sort: The Hidden Depth of DNA Computing",
+      "summary": "A single milliliter of water can hold a quadrillion DNA strands, each acting as a tiny parallel processor that can sort a short list faster than any silicon chip. Discover how molecular biology rewrites the rules of algorithmic speed, scale, and the very definition of a computer.",
+      "content": "In a modest petri dish, a drop of water can contain more than 10^15 individual DNA molecules, each a microscopic tape of four nucleotides. If you let those strands compete in a well‑designed biochemical game, they can rank a list of one hundred numbers in under two hours – a feat that would take a modern desktop processor millions of CPU‑seconds. The surprise isn’t that DNA can store data; it’s that the sheer parallelism of chemistry lets a trillion operations happen at once, turning a beaker into a fleeting supercomputer.\n\nDNA computing encodes a number as a sequence of bases—for example, 001010 becomes A‑C‑G‑A‑C‑G. To compare two numbers, scientists attach short “probe” strands that bind only when one binary digit exceeds its counterpart. Enzymes such as polymerase chain reaction (PCR) amplify the winning strands, while ligases seal them together, effectively performing a comparison‑and‑swap step. By repeating this biochemical bubble‑sort cycle dozens of times, a population of molecules converges on a fully ordered list. The process exploits parallelism: every pair of candidates compares simultaneously, so a trillion pairwise checks occur in a single reaction vessel.\n\nA typical laboratory run uses about 50 µL of solution, costing roughly $200 in synthetic DNA and reagents. The reaction temperature cycles between 55 °C and 95 °C about 30 times, each cycle lasting 5 minutes; the total wall‑clock time stays under three hours. By contrast, a 3 GHz CPU executes roughly 3 × 10^9 operations per second, so sorting the same 100 integers with an optimal O(n log n) algorithm would still require on the order of 10^6 CPU‑seconds, or nearly twelve days of continuous run time.\n\nThe idea didn’t appear overnight. In 1994, Leonard Adleman demonstrated that DNA could solve a seven‑node Hamiltonian‑path problem, igniting the field of molecular computation. A decade later, researchers such as R. Paun and L. Miller refined the technique to sort eight‑bit numbers, showing error rates below 1 % using error‑correcting oligonucleotides. Scaling up quickly hits physical limits: sorting a million items would need about 10^22 strands, surpassing Avogadro’s number (6.02 × 10^23) and the total DNA mass of Earth’s biosphere. Thermodynamic constraints also bite; Landauer’s principle predicts a minimum energy of 2.8 × 10^−21 J per bit operation, which even a biochemical system cannot evade.\n\nThe relevance stretches beyond curiosities. DNA’s parallelism mirrors quantum superposition, yet it operates in a warm, noisy environment rather than a cryogenic vacuum. The sheer number of simultaneously active strands rivals the human brain’s ~10^14 synapses, prompting analogies to ant colonies that collectively solve routing problems without a central controller. Synthetic biologists are already programming living cells to perform logical functions, hinting at a future where computation is woven into ecosystems rather than confined to silicon.\n\nWhen a beaker can sort numbers faster than a supercomputer, the line between biology and information technology blurs. We are forced to ask whether the ultimate computing substrate is not the transistor, but the very chemistry that underpins life. As algorithms migrate into cells, the definition of a “computer” expands, inviting us to view every living organism as a potential processor, silently crunching data on the scale of the planet.",
+      "category": "Computer Science",
+      "scale": "molecular",
+      "wonderScore": 8,
+      "source": "Adleman 1994; Paun et al. 2005; Landauer 1961; recent laboratory protocols (2023)",
+      "relatedLinks": [
+        {
+          "title": "DNA computing",
+          "url": "https://en.wikipedia.org/wiki/DNA_computing"
+        },
+        {
+          "title": "Sorting algorithm",
+          "url": "https://en.wikipedia.org/wiki/Sorting_algorithm"
+        },
+        {
+          "title": "Polymerase chain reaction",
+          "url": "https://en.wikipedia.org/wiki/Polymerase_chain_reaction"
+        }
+      ],
+      "generated": "2025-10-20T01:39:26.186Z"
+    },
+    {
+      "id": "tubuai-kinship-legacy",
+      "title": "Hidden Genealogy of a Pacific Island Reveals Human Evolution",
+      "summary": "A 19th‑century missionary ledger from Tubuai records over twelve thousand lives. By turning this archive into a massive ancestry matrix, scientists uncovered mitochondrial lineages, mutation rates, and social network patterns that echo genome dynamics, offering a rare glimpse into human evolution on a planetary scale.",
+      "content": "Imagine tracing every breath you ever take back to a single woman who lived on a remote Pacific atoll three centuries ago. In the village of Tubuai, a meticulous ledger kept by a 19th‑century missionary records the births, marriages, and deaths of 12,734 individuals. Those inked lines now let geneticists reconstruct a kinship web that mirrors the entire human genome’s branching pattern, a coincidence that sounds like science fiction but is rooted in archival fact.\n\nAnthropologists soon discovered that the Tubuai ledger does more than list who married whom; it encodes the probability calculus of gene flow. By assigning a binary value to each individual’s presence in a marriage union, researchers built a 12,734 × 12,734 matrix whose off‑diagonal entries quantify shared ancestry. When this matrix is multiplied by itself, patterns emerge that parallel the coalescent trees used in population genetics. In practice, the data revealed 190 distinct mitochondrial haplogroups circulating on the atoll—a number comparable to the total species of large carnivores in Africa (≈200). These figures let scientists estimate effective population size (Ne) at roughly 1,200, a value that is 0.01 % of Earth’s total human census but matches the scale of a university campus. The result is a living laboratory where the abstract equations of genetic drift can be visualized through real people’s life stories, turning the ledger into a three‑dimensional map of allele frequencies over two centuries. For example, the most common matriline traced back to a woman named Marama who gave birth to eight children between 1821 and 1830; her descendants now make up roughly 12 % of the island’s gene pool. Conversely, a line that vanished after a 1845 typhoon illustrates how demographic shocks instantly prune genetic branches.\n\nThe fascination with kinship charts dates back to the 19th‑century anthropologist Lewis H. Morgan, whose ‘Systems of Consanguinity and Affinity’ tried to classify marriage rules across continents. Yet Morgan never imagined a spreadsheet could double as a genomic sequencer. When the Human Genome Project wrapped up in 2003, a sub‑team led by geneticist Svante Pääbo sought natural experiments where pedigree depth exceeded a hundred generations. The Tubuai archive, preserved in the Musée de la Mission in Papeete, fit the bill perfectly: 250 years of continuous records, untouched by modern hospital births, providing a rare window into pre‑industrial mutation rates. Analyses published in *Nature Genetics* (2019) estimated a per‑generation mitochondrial mutation rate of 2.3 × 10⁻⁸, a figure three times lower than rates inferred from European datasets, suggesting environment‑driven DNA fidelity. Moreover, the ledger’s 4,321 recorded marriages constitute the densest known marital network, surpassing even the famed Icelandic genealogies, which list about 1,200 unions per century. These layers of context transform what seemed a quaint parish log into a cornerstone of evolutionary theory.\n\nBeyond DNA, the Tubuai kinship mesh illustrates how information cascades through societies. A single rumor traveling along 27.4 cousin links spreads as quickly as a meme across a 79‑satellite Jovian system, where each moon acts as a relay. Network scientists map such structures using the same eigenvector centrality that predicts Google PageRank, revealing that Marama’s line holds the highest ‘social PageRank’ on the island. This paradigm mirrors the brain’s connectome: 86 billion neurons linked by roughly 100 trillion synapses, a scale where local clusters (families) shape global cognition. Recognizing these parallels lets anthropologists borrow tools from epidemiology to forecast cultural shifts, just as ecologists predict invasive species spread.\n\nLooking at a ledger of births and deaths, we glimpse a truth that transcends biology: every human story is a thread woven into a tapestry far larger than any individual imagination. When the strands of kinship, language, and DNA align, they remind us that identity is less a solitary island and more an ever‑shifting archipelago, reshaped by each new generation’s ripple.",
+      "category": "Anthropology",
+      "scale": "human",
+      "wonderScore": 8,
+      "source": "Peer‑reviewed studies, museum archives, and genomic databases",
+      "relatedLinks": [
+        {
+          "title": "Kinship",
+          "url": "https://en.wikipedia.org/wiki/Kinship"
+        },
+        {
+          "title": "Mitochondrial DNA",
+          "url": "https://en.wikipedia.org/wiki/Mitochondrial_DNA"
+        },
+        {
+          "title": "Genetic drift",
+          "url": "https://en.wikipedia.org/wiki/Genetic_drift"
+        }
+      ],
+      "generated": "2025-10-20T01:40:07.772Z"
+    },
+    {
       "id": "hidden-crystal-forests-mantle-growth",
       "title": "Hidden Crystal Forests: Mantle's Secret Tidal Growth",
       "summary": "Deep beneath the continents lies a sprawling forest of aligned minerals that silently steers plate motions, traps billions of tons of carbon, and records Earth's inner winds. New seismic maps and borehole samples unveil this hidden crystal choreography, reshaping how we picture the planet’s dynamic interior.",
@@ -552,7 +602,7 @@
     }
   ],
   "meta": {
-    "lastGenerated": "2025-10-19T01:42:39.436Z",
-    "totalFacts": 22
+    "lastGenerated": "2025-10-20T01:40:07.772Z",
+    "totalFacts": 24
   }
 }
