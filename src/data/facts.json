@@ -1,6 +1,56 @@
 {
   "facts": [
     {
+      "id": "cosmic-white-dwarf-heartbeat",
+      "title": "Listening to the Cosmic Heartbeat of White Dwarfs",
+      "summary": "White dwarfs, the dense leftovers of Sun‑like stars, pulse like cosmic bells. By decoding these subtle rhythms, astronomers unveil interior structures, age the Milky Way, and even test fundamental physics, turning the silent remnants of dead stars into precise chronometers.",
+      "content": "Imagine a star the size of Earth that rings like a bell every few minutes, its tremors echoing across the Milky Way. These pulsations—detectable only with high‑precision photometry—belong to white dwarfs, the dense remnants of once‑sunlike suns. In just a heartbeat of 200 to 1 200 seconds, they reveal secrets about galactic history that no telescope can directly see.\n\nWhite dwarfs pack roughly the mass of the Sun (≈1.0 M☉) into a sphere barely larger than Earth (radius ≈0.009 R☉, or 6 500 km). This compression yields average densities of 10⁶ kg m⁻³—about a million times water and comparable to the core of a massive planet. Their interiors are a quantum soup of carbon and oxygen nuclei immersed in a sea of degenerate electrons, a state that prevents further gravitational collapse without igniting a supernova.\n\nBecause a degenerate electron gas conducts heat poorly, white dwarfs cool slowly, allowing temperature‑driven gravity modes to set up standing waves that surface as brightness variations. Space missions such as *Kepler* and *TESS* have recorded over 30 pulsating white dwarfs, each displaying a spectrum of periods ranging from 100 s to 1 500 s. The star GD 358, for example, oscillates in at least 13 distinct modes, a pattern astronomers decode like a musical chord to infer interior stratification.\n\nBy measuring how quickly the pulsation periods drift—typically a few milliseconds per year—researchers can calculate the cooling rate with astonishing precision. A 0.6‑M☉ white dwarf loses about 0.001 % of its thermal energy each million years, translating into a temperature drop of ~1 K per 10⁶ yr. This tiny clock has been used to estimate that the Galactic disk is 8.2 ± 0.5 billion years old, a figure that aligns with independent nucleocosmochronology.\n\nWhite dwarf pulsations were first spotted in 1968 when James Robinson noticed periodic brightening in HL Tau 76. The discovery lagged behind helioseismology, but by the late 1990s the Whole Earth Telescope—a global network of observatories—could monitor a star continuously. This mirrors how geologists use seismic waves to map Earth’s interior; today astronomers wield stellar seismology to probe layers hidden beneath a star’s opaque surface.\n\nAsteroseismic data showed that many white dwarfs start crystallizing once their cores cool below ~10⁶ K, forming a carbon‑oxygen lattice similar to a gigantic diamond. In a 1.0‑M☉ remnant, roughly 30 % of the mass solidifies, releasing latent heat that slows cooling and pushes age estimates up by hundreds of millions of years. This links astrophysics to materials science, reminding us that the same quantum mechanics that create lab‑grown diamonds also govern a star’s fate.\n\nBecause each pulsation acts like a stable metronome, astronomers can detect tiny timing offsets caused by orbiting planets or the faint tug of a passing gravitational wave. A 0.5‑second shift in a 300‑second mode over a decade would indicate a planet of roughly 0.3 Jupiter masses at 1 AU. Moreover, the cooling slowdown from core crystallization influences neutrino emission, providing an astrophysical laboratory for testing the Standard Model’s low‑energy weak interactions.\n\nFuture missions like the *Roman* Observatory plan a dedicated white‑dwarf asteroseismology program, which could refine the Hubble constant tension by supplying an independent cosmic chronometer. The collective pulsation data from thousands of white dwarfs will also improve dark‑matter scattering models, because certain particles would heat the cores and alter observed period drifts.\n\nEach heartbeat of a white dwarf reminds us that even the most compact stellar relics continue to speak, turning the silent darkness of the cosmos into a symphony of time. By listening to these faint bells, we not only chart the Milky Way’s past but also glimpse the profound continuity linking quantum particles, planetary cores, and the grand arc of the universe.",
+      "category": "Astronomy",
+      "scale": "cosmic",
+      "wonderScore": 8,
+      "source": "NASA, ESA, peer‑reviewed journals",
+      "relatedLinks": [
+        {
+          "title": "White dwarf",
+          "url": "https://en.wikipedia.org/wiki/White_dwarf"
+        },
+        {
+          "title": "Asteroseismology",
+          "url": "https://en.wikipedia.org/wiki/Asteroseismology"
+        },
+        {
+          "title": "Crystallization (physics)",
+          "url": "https://en.wikipedia.org/wiki/Crystallization_(physics)"
+        }
+      ],
+      "generated": "2025-10-21T01:27:12.580Z"
+    },
+    {
+      "id": "modular-math-telemetry",
+      "title": "How Modular Math Keeps Space Signals Alive",
+      "summary": "A single byte of modular arithmetic saved Voyager’s Jupiter photo from cosmic noise. Discover how Reed‑Solomon codes, built on finite‑field polynomials, turned a 0.05% bit error into perfect data, and see why the same math underpins QR codes, cryptocurrencies, and DNA sequencing.",
+      "content": "Imagine the grainy 1979 photograph of Jupiter sent back by Voyager after a 1.6 billion‑kilometer trek through cosmic radiation in the harsh vacuum of space. A quiet mathematician’s trick—modular arithmetic—preserved the data, correcting less than one part in a thousand of a bit, leaving the image almost crystal‑clear today still remarkably.\n\nAt its heart, modular arithmetic treats numbers like a clock: after reaching the modulus they wrap to zero. Counting on one hand is a simple mod‑5 system; the number 7 becomes 2 because 7‑5=2. In digital systems the 'clock' has 256 ticks, matching a byte’s range from 0 to 255. This wrap‑around lets engineers craft polynomials that behave when bits flip.\n\nReed‑Solomon codes, the workhorse of deep‑space telemetry, encode k data bytes into n code bytes by evaluating a degree‑(k‑1) polynomial over GF(2^8). Voyager’s transmission used n = 255 and k = 223, adding 32 parity bytes to each block. The mathematics guarantees correction of up to (n‑k)/2 = 16 erroneous bytes, because the original polynomial can be reconstructed from any 223 correct points.\n\nEach parity byte packs eight check equations, letting the code detect burst errors over consecutive bits—a feature crucial for transmissions across the Sun’s noisy corona. A single corrupted bit in a 2,040‑bit block (255 × 8) is a 0.05% error rate, yet the code’s algebraic structure restores the data perfectly. The decoder runs a Euclidean algorithm on the received polynomial, analogous to finding a greatest common divisor, but all operations occur modulo 257, a prime just above 256.\n\nBefore interplanetary probes, protecting a message with a few equations was theory. Claude Shannon’s 1948 “A Mathematical Theory of Communication” showed that error‑correcting codes can approach a channel’s capacity, yet practical constructions lagged. Richard Hamming’s (7,4) code of 1950 offered the first real‑world fix, correcting any single‑bit error in a seven‑bit word. A decade later Irving Reed and Gustave Solomon married Galois’s finite‑field theory with polynomial interpolation, creating the Reed‑Solomon code. Voyager’s 1979 flyby marked its debut: each of the spacecraft’s 1.18 GB of data was sliced into 255‑byte blocks. With 2,040 possible bit patterns per block, the code organizes this space into 2^223 ≈ 1.07 × 10^67 distinct messages—orders of magnitude beyond the ≈10^80 atoms in the observable universe. This massive combinatorial margin guarantees that even a burst of solar‑storm‑induced flips leaves a unique, recoverable polynomial hidden in the noise. Consequently, the signal‑to‑noise ratio needed for reliable communication drops dramatically, enabling missions to the outer planets with limited transmitter power.\n\nThe same algebra that rescued Voyager’s images powers today’s digital life. QR codes on your phone rely on a shortened Reed‑Solomon variant; a 33 × 33 matrix can encode up to 1,224 bits while correcting up to 30% damage—fine enough to read a sticker after it’s been coffee‑spilled. In cryptography, the elliptic‑curve groups used for Bitcoin wallets are built on finite fields identical to those in error‑correcting codes, illustrating a hidden symmetry between data integrity and secrecy. Even the human genome sequencing pipelines employ Reed‑Solomon‑like checksums to patch sequencing errors, ensuring that a 3‑billion‑base‑pair read contains fewer than one misread per million bases. These cross‑disciplinary echoes show that modular arithmetic is not a niche curiosity but a universal language stitching together space probes, smartphones, blockchains, and biology.\n\nAt its core, mathematics turns chaos into certainty by hiding perfect patterns beneath noise. Whether a photon from Jupiter or a pixel on a QR code, the same finite‑field choreography restores the original signal, reminding us that fragile messages are guarded by invisible equations—proof that order can emerge wherever randomness threatens to drown it.",
+      "category": "Mathematics",
+      "scale": "planetary",
+      "wonderScore": 8,
+      "source": "NASA archives, scholarly articles on error‑correcting codes, Wikipedia",
+      "relatedLinks": [
+        {
+          "title": "Reed–Solomon error correction",
+          "url": "https://en.wikipedia.org/wiki/Reed%E2%80%93Solomon_error_correction"
+        },
+        {
+          "title": "Modular arithmetic",
+          "url": "https://en.wikipedia.org/wiki/Modular_arithmetic"
+        },
+        {
+          "title": "Voyager program",
+          "url": "https://en.wikipedia.org/wiki/Voyager_program"
+        }
+      ],
+      "generated": "2025-10-21T01:28:20.685Z"
+    },
+    {
       "id": "dna-sorting-paradox",
       "title": "When Molecules Sort: The Hidden Depth of DNA Computing",
       "summary": "A single milliliter of water can hold a quadrillion DNA strands, each acting as a tiny parallel processor that can sort a short list faster than any silicon chip. Discover how molecular biology rewrites the rules of algorithmic speed, scale, and the very definition of a computer.",
@@ -602,7 +652,7 @@
     }
   ],
   "meta": {
-    "lastGenerated": "2025-10-20T01:40:07.772Z",
-    "totalFacts": 24
+    "lastGenerated": "2025-10-21T01:28:20.685Z",
+    "totalFacts": 26
   }
 }
