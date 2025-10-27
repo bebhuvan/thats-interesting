@@ -1,6 +1,56 @@
 {
   "facts": [
     {
+      "id": "oort-cloud-ice-frontier",
+      "title": "The Invisible Ice Frontier Shaping Our Solar System",
+      "summary": "A hidden halo of trillions of frozen bodies stretches half the distance to the nearest star, weighing as much as a tenth of Earth. By studying comet arrivals, astronomers unveil this distant reservoir, revealing how stellar tides, planetary migrations, and galactic encounters intertwine to sculpt our cosmic neighborhood.",
+      "content": "Imagine a shell of icy bodies so distant that light from the Sun takes over an hour to reach it, yet its collective weight could tip the balance of the entire Solar System. That ghostly sphere, the Oort Cloud, hides more comets than there are stars in the Milky Way—perhaps a trillion icy wanderers circling the Sun at the brink of interstellar space.\n\nThe Oort Cloud is not a solid shell but a fuzzy, spheroidal swarm spanning about 2,000 to 100,000 AU—roughly half the distance to Proxima Centauri. At its inner edge, a comet needs just 3 years to orbit; at the outer fringe, an orbit can take more than 3 million years. These icy relics are leftovers from the Solar System’s birth 4.6 billion years ago, flung outward by Jupiter and Saturn.\n\nAstronomers gauge the Cloud’s size not by direct sight—its objects are dimmer than magnitude 30—but by the influx of long‑period comets. About one new comet with an orbit over 200 years appears each year, implying roughly 5 × 10¹² bodies larger than 1 km. With an average mass of 2 × 10¹² kg (a modest mountain), the Cloud totals about 0.1 Earth masses, comparable to the whole asteroid belt. Its outer edge also buffers stellar tides, occasionally nudging comets inward, linking planetary and galactic dynamics.\n\nIn 1950 Jan Oort introduced the idea of a distant comet reservoir to explain why some comets arrive from random directions rather than the familiar ecliptic plane. He plotted the distribution of reciprocal semi‑major axes (1/a) and found a sharp clustering near zero, a fingerprint of a vast, barely bound population. He estimated the cloud’s inner edge at 20,000 AU using observed comet velocities, a guess that modern surveys have refined but not shattered. Space‑based infrared missions such as IRAS and later WISE have glimpsed a faint halo of dust—potentially the debris of eroded Oort objects—providing the first indirect visual hint of the cloud’s existence. Meanwhile, simulations of planet formation reveal that giant planets can eject up to 95 % of the primordial planetesimal disk, populating the Oort Cloud while simultaneously shaping the architecture of inner worlds. In the past decade, comets such as C/2014 UN271 (Bernardinelli) have been spotted inbound from beyond 20,000 AU, confirming that the cloud reaches the outer limits Oort first imagined.\n\nBeyond our Solar System, many stars harbor cometary clouds reminiscent of Oort’s, as evidenced by the infrared excesses of debris disks around mature Sun‑like stars. These extrasolar analogues can deliver water‑rich bodies to inner planets, a process that may have seeded Earth’s oceans. On a galactic scale, the Oort Cloud behaves like a miniature halo, feeling the Milky Way’s tidal field and occasional stellar fly‑bys that can dislodge comets. For instance, the passage of the star Gliese 710 within 0.06 pc in 1.3 million years is projected to stir up a torrent of new long‑period comets, a reminder that our distant icy envelope is a dynamic bridge between planetary and galactic environments.\n\nThe Oort Cloud reminds us that even the quietest corners of our own backyard are shaped by forces far beyond—stellar tides, ancient planetary migrations, and the galaxy’s own rhythm. Recognizing that our planet’s history is intertwined with a halo of forgotten ice crystals expands the notion of ‘home’, urging us to view the Solar System not as an isolated island but as a participant in a vast, ever‑changing cosmic dance.",
+      "category": "Astronomy",
+      "scale": "cosmic",
+      "wonderScore": 8,
+      "source": "NASA, ESA, peer-reviewed literature",
+      "relatedLinks": [
+        {
+          "title": "Oort cloud",
+          "url": "https://en.wikipedia.org/wiki/Oort_cloud"
+        },
+        {
+          "title": "Long-period comet",
+          "url": "https://en.wikipedia.org/wiki/Long-period_comet"
+        },
+        {
+          "title": "Proxima Centauri",
+          "url": "https://en.wikipedia.org/wiki/Proxima_Centauri"
+        }
+      ],
+      "generated": "2025-10-27T01:42:46.014Z"
+    },
+    {
+      "id": "prime-gaps-hidden-rhythm",
+      "title": "The Hidden Rhythm of Prime Gaps",
+      "summary": "Prime numbers whisper a secret pattern in the length of the empty spaces between them. From tiny gaps of one to colossal stretches of thousands, these intervals reveal surprising order, tie into physics and music, and challenge our intuition about randomness—offering a fresh lens on the mathematics that scaffolds reality.",
+      "content": "Imagine a universe where the distances between neighboring stars fluctuate wildly—sometimes a whisper of a light‑year, other times a gulf of dozens. In the realm of whole numbers, a similar cosmic dance occurs among prime numbers, the indivisible building blocks of arithmetic. The gaps separating consecutive primes are not random scribbles; they follow a secret rhythm that can stretch from a single unit to hundreds, reshaping how we view order in chaos.\n\nFormally, the gap g_n is defined as p_{n+1}−p_n, where p_n denotes the n‑th prime. While the Prime Number Theorem tells us that the average gap near a large number N is about ln N, the actual gaps can deviate dramatically. For instance, around one million (10^6) the average gap is roughly ln 10^6 ≈ 13.8, yet the longest observed gap up to that point stretches 154 integers—a stretch that would contain 14 primes if they were evenly spaced. Jump to the astronomic scale of 10^12, and the maximal gap recorded so far reaches 1,468, dwarfing the local average of ln 10^12 ≈ 27.6 by a factor of more than fifty.\n\nNorbert Cramér, in 1936, proposed a probabilistic model suggesting that gaps should never exceed about (ln p)^2. Translating that bound into concrete terms, at p≈10^20 the square of the natural logarithm is roughly (46)^2≈2,100, predicting that even at such astronomical magnitudes a prime gap larger than a few thousand should be exceedingly rare. Yet the actual record holder at 10^19 is a gap of 1,468, comfortably within Cramér’s ceiling, hinting that the conjecture may capture an invisible ceiling on disorder.\n\nModern computational efforts, such as the PrimeGrid project, have pushed the frontier beyond 10^23, uncovering a record gap of 4,819 at approximately 4.3×10^24. That stretch contains no prime for more than 5,000 consecutive integers—roughly the distance a commuter walks from a suburban station to a city center, multiplied by twelve.\n\nThe fascination with prime gaps dates back to the ancient Greeks, who noted that 2 and 3 are the only consecutive primes—a fact that earned the moniker ‘twin primes.’ It wasn’t until the 19th century that mathematician Viggo Brun proved the sum of reciprocals of twin primes converges, a result now known as Brun’s constant (~1.90216058). This convergence hinted that gaps, however small, possess a subtle regularity. In the twentieth century, the quest to understand gaps became entangled with the Riemann zeta function; the distribution of zeros of ζ(s) directly influences the error term in the Prime Number Theorem, thereby affecting how erratic prime gaps can become. Moreover, the unpredictability of large gaps underlies the security of RSA encryption: the difficulty of factoring a number hinges on the scarcity of primes in certain intervals, a scarcity that is quantified precisely by gap statistics.\n\nPrime gaps echo beyond arithmetic. In quantum chaos, the spacing between energy levels of heavy nuclei follows the same statistical distribution as gaps between large primes, a pattern first noted in the Montgomery–Odlyzko law. Musicians see a parallel in the harmonic series: intervals between overtones shrink then widen, mirroring the irregular stretch of large prime gaps. Even the genetic code offers a biological analogue—among the 64 codons, the 20 amino acids occupy clusters separated by unused triplets, a distribution biologists model with prime‑gap‑like randomness.\n\nStanding at the boundary where order dissolves into apparent chaos, prime gaps remind us that randomness can carry its own hidden scaffolding. Each silent stretch, whether a dozen numbers or a few thousand, is a testament to the universe’s capacity to balance scarcity with abundance—a balance that, perhaps, underlies every pattern we recognize, from the ticking of atoms to the rise of civilizations.",
+      "category": "Mathematics",
+      "scale": "human",
+      "wonderScore": 8,
+      "source": "Peer‑reviewed articles, PrimeGrid data, Wikipedia",
+      "relatedLinks": [
+        {
+          "title": "Prime number theorem",
+          "url": "https://en.wikipedia.org/wiki/Prime_number_theorem"
+        },
+        {
+          "title": "Twin prime",
+          "url": "https://en.wikipedia.org/wiki/Twin_prime"
+        },
+        {
+          "title": "Riemann hypothesis",
+          "url": "https://en.wikipedia.org/wiki/Riemann_hypothesis"
+        }
+      ],
+      "generated": "2025-10-27T01:43:22.754Z"
+    },
+    {
       "id": "clicks-versus-codes",
       "title": "When Clicks Echo Across Continents: Hidden Patterns in Human Speech",
       "summary": "Clicks are more than exotic sounds; they expose hidden combinatorial power in human language, link to genetics, and even influence AI. This article uncovers the rare phoneme inventories, their evolutionary dynamics, and surprising parallels across science, urging readers to hear the deeper pulse of speech.",
@@ -902,7 +952,7 @@
     }
   ],
   "meta": {
-    "lastGenerated": "2025-10-26T01:40:13.343Z",
-    "totalFacts": 36
+    "lastGenerated": "2025-10-27T01:43:22.754Z",
+    "totalFacts": 38
   }
 }
