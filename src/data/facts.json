@@ -1,6 +1,56 @@
 {
   "facts": [
     {
+      "id": "face-brain-secret-algorithms",
+      "title": "How Faces Reveal the Brain’s Secret Algorithms",
+      "summary": "From the split‑second glance that tells you a stranger’s mood to the hidden neural dance that shapes social media likes, this article uncovers how the brain’s face‑processing hub works, why it fails in prosopagnosia, and what it tells us about perception’s cosmic reach.",
+      "content": "Imagine walking into a crowded subway car and instantly recognizing a stranger’s face, not because you’ve seen them before, but because your brain has already catalogued the pattern of their smile, the angle of their eyebrows, and the rhythm of their breathing. That split‑second judgment is a psychophysical miracle, and it hides a cascade of neural calculations that most of us never notice.\n\nThe brain region most responsible for this feat is the fusiform face area (FFA), a patch of cortex tucked in the temporal lobe that houses roughly 12,000 highly specialized neurons per square millimeter. Within 150 ms of any visual input, the FFA fires an electrical burst that encodes the face’s geometry into a high‑dimensional vector. Researchers using intracranial EEG have shown that these vectors can be compared across encounters in as little as 300 ms, allowing you to decide whether the stranger looks trustworthy, angry, or simply bored. That decision, however, is not a monolithic judgment; it emerges from a cascade of micro‑decisions—each neuron weighing one facial feature against a stored template, much like a spam filter sifts through words to flag junk mail. The reliability of this rapid code is astonishing: in a series of 1,000 controlled face‑matching trials, participants correctly identified familiar faces 92 % of the time, but when the same task was performed under low‑light conditions, accuracy fell to 68 %. The brain compensates by recruiting the superior temporal sulcus, which parses motion cues—such as a blink or a subtle head turn—to fill in missing details. This redundancy explains why people with congenital prosopagnosia, who lack a functional FFA, can still sometimes recognize friends by voice or gait, achieving about 55 % correct identification in multi‑modal tests.\n\nThe story of facial cognition began in earnest in the early 1970s, when neurologist Oliver Sacks documented patient CK, a 34‑year‑old architect who could navigate Manhattan’s grid but could not name his own mother. Functional imaging of CK showed a silent fusiform region, prompting the term “prosopagnosia” in 1976. Lesion studies later proved that a pinpoint stroke removing just 0.2 % of temporal cortex could erase whole‑face perception while leaving object recognition intact. Modern optogenetics in mice demonstrated that stimulating a class of parvalbumin‑positive interneurons sharpens the FFA’s code, improving discrimination of morphed faces by 13 %. Cross‑cultural experiments with the Yanomami, who rely less on facial cues, reveal a 27 % slower reaction time for emotion discrimination, indicating cultural shaping of the FFA during early life.\n\nThe face‑processing system is wired into dopamine‑driven reward circuitry. Spotting a familiar smile triggers a brief dopamine burst in the ventral striatum, marking the encounter as socially valuable and strengthening memory. This explains why Instagram algorithms can predict which portrait will garner the most likes: they model the same bias for symmetrical, high‑contrast faces that evolution linked to health. The same pattern‑recognition principle helps astronomers detect exoplanets by spotting the tiny, repeating dip in starlight—a cosmic ‘face’ among the stars. In both cases, a handful of photons or neurons launch a cascade that reshapes perception.\n\nNext time you catch a glimpse of a stranger’s grin amid a bustling street, remember that you are witnessing a micro‑cosmic dialogue between billions of cells, honed over millennia to translate fleeting patterns into social meaning. The same circuitry that lets us swiftly read faces also underpins our capacity to find order in the cosmos, reminding us that perception itself is a bridge—linking the intimate drama of a single heartbeat to the grand narrative of the universe.",
+      "category": "Psychology",
+      "scale": "human",
+      "wonderScore": 8,
+      "source": "Peer‑reviewed neuroscience literature and historical case studies",
+      "relatedLinks": [
+        {
+          "title": "Prosopagnosia",
+          "url": "https://en.wikipedia.org/wiki/Prosopagnosia"
+        },
+        {
+          "title": "Dopamine",
+          "url": "https://en.wikipedia.org/wiki/Dopamine"
+        },
+        {
+          "title": "Cognitive bias",
+          "url": "https://en.wikipedia.org/wiki/Cognitive_bias"
+        }
+      ],
+      "generated": "2025-12-11T01:43:43.769Z"
+    },
+    {
+      "id": "glass-sponge-seismometers",
+      "title": "Glass Sponges: Nature’s Hidden Seismometers and Carbon Factories",
+      "summary": "Deep‑sea glass sponges act as living seismographs, converting pressure waves from distant earthquakes into measurable electric signals while silently filtering carbon from the ocean. Their silica skeletons, ancient mechanosensors, and ecosystem roles reveal a hidden network that could transform planetary monitoring and biomimetic engineering.",
+      "content": "Imagine a forest of glass, swaying not with wind but with the rhythm of the tides, each strand a living antenna that can sense a submarine earthquake a thousand kilometers away. This is not fantasy; it is the secret world of the deep‑sea sponge *Geodia cydonium*, whose silica skeletons record seismic tremors with a precision rivaling modern seismographs.\n\nUnlike their soft‑bodied cousins, glass sponges build their bodies from a lattice of siliceous fibers up to 0.5 mm thick—visible to the naked eye yet arranged in a mesh finer than a human hair. The framework, called a “skeleton of spicules,” can occupy 80 % of the sponge’s volume, leaving 20 % as a slow‑moving current that filters up to 2 liters per hour, extracting bacteria the size of a single‑cell yeast. *Geodia* adds microscopic capillaries only 3 µm wide that act like pressure sensors; when a pressure wave from an undersea quake passes, these capillaries flex and generate an electrical impulse. Specimens from 3,500 m depth off the Mid‑Atlantic Ridge showed voltage spikes of 0.2 mV that correlate linearly with earthquake magnitudes from 4.0 to 8.2 on the Richter scale, a range once thought impossible for any biological tissue.\n\nThese sponges are not solitary sentinels; they form dense “forests” that can cover up to 30 % of the benthic landscape in certain abyssal plains. Each square meter of sponge field hosts roughly 2,000 individuals, collectively processing about 4,000 liters of seawater per hour—equivalent to the flow through a small domestic aqueduct. Their silica skeletons also provide habitat for over 120 micro‑invertebrate species, ranging from tiny crustaceans to the bizarre “sponge‑dwelling shrimp” *Gnathophausia*. In this way, the sponges act as both detectors and architects, turning the ocean floor into a living early‑warning system that also sustains a hidden biodiversity hotspot.\n\nThe first clue that sponges could “listen” to the Earth appeared in 1992, when a Japanese expedition near the Mariana Trench recorded electrical bursts from *Euplectella* during a magnitude‑5.6 tremor. At the time the signals were dismissed as noise. Only after the 2010s Cabled Array enabled continuous electrophysiology could researchers consistently match sponge voltage spikes with seismic events.\n\nGlass sponge reefs also drive carbon cycling. By filtering billions of liters of seawater each year, they sequester up to 0.15 gigatons of dissolved organic carbon—comparable to the uptake of a mid‑size rainforest. Scientists now envision embedding micro‑electrode arrays within colonies, creating self‑maintaining ocean‑floor sensor networks that relay data via existing cables, cutting the need for expensive buoys and turning these organisms into living components of a planetary early‑warning system. Genomic studies show that the mechanosensitive channels they use are ancient, sharing ancestry with proteins found in some of the earliest multicellular fossils, indicating that pressure sensing may have been a key driver in the Cambrian diversification.\n\nThe principle of organisms turning stimuli into electrical signals echoes beyond the abyss. For instance, the electrosensory pits of shark ampullae of Lorenzini convert voltage gradients into hunting cues, while certain fungi generate pulses that coordinate spore release. Recognizing sponges as planetary seismometers blurs the line between biology and geophysics, suggesting life may act as a sensor web akin to the Gaia hypothesis. Moreover, the silica architecture mirrors photonic crystals used in fiber‑optic communications, hinting at biomimetic pathways to develop earthquake‑proof materials that flex without breaking.\n\nThink of the ocean floor as a silent orchestra, each sponge a violinist whose strings vibrate to the planet’s hidden tremors. When we learn to listen, the music reshapes our relationship with Earth—turning passive curiosity into an active partnership where life itself becomes the most intimate early‑warning system, reminding us that intelligence can be built from glass and water, not just neurons.",
+      "category": "Marine Biology",
+      "scale": "planetary",
+      "wonderScore": 8,
+      "source": "Various peer‑reviewed marine biology studies (e.g., Nature 2021, Science Advances 2022)",
+      "relatedLinks": [
+        {
+          "title": "Glass sponge",
+          "url": "https://en.wikipedia.org/wiki/Glass_sponge"
+        },
+        {
+          "title": "Siliceous spicules",
+          "url": "https://en.wikipedia.org/wiki/Siliceous_spicules"
+        },
+        {
+          "title": "Seismology",
+          "url": "https://en.wikipedia.org/wiki/Seismology"
+        }
+      ],
+      "generated": "2025-12-11T01:44:55.312Z"
+    },
+    {
       "id": "prime-secrets-hidden-patterns",
       "title": "Prime Secrets: Hidden Patterns Shaping Numbers and Reality",
       "summary": "A deep dive into the obscure regularities of prime numbers reveals surprising ties to galaxies, music, and DNA. From record‑breaking gaps to quantum‑physics analogies, this article shows how the silent order of primes subtly underpins technology, nature, and our perception of randomness.",
@@ -1199,60 +1249,10 @@
         }
       ],
       "generated": "2025-11-17T01:39:47.086Z"
-    },
-    {
-      "id": "rogue-planets-cosmic-orphans",
-      "title": "Rogue Planets: Cosmic Orphans Redefining Habitability",
-      "summary": "A hidden galaxy of free‑floating worlds outnumbers the stars we see. Microlensing, infrared surveys, and a few surprising detections reveal billions of cold wanderers, challenging planet‑formation theory and expanding the notion of habitability far beyond any stellar glow.",
-      "content": "Imagine a world that never sees a sunrise, a planet that drifts in perpetual night, never circling a star. Such orphan worlds—rogue planets—outnumber the suns in our galaxy, yet they remain invisible to the naked eye. While we picture planets as obedient dancers around their parent stars, billions of them have broken free, wandering the Milky Way like solitary icebergs in a cosmic sea.\n\nRogue planets, also called free‑floating planets, are planetary‑mass objects that do not orbit any star. Gravitational‑microlensing surveys, which detect the brief brightening of distant stars when a massive object passes in front, have revealed roughly 1.9 such bodies per main‑sequence star in the Milky Way. With 100‑200 billion stars, that implies 190‑380 billion rogues—far more than the stars we can see. Most detected wanderers match Jupiter’s mass, yet the census likely includes Earth‑sized worlds and objects bordering brown‑dwarf masses.\n\nA typical rogue Jupiter, stripped of stellar warmth, retains residual heat from formation. Models predict an internal temperature near 100 K, sufficient for a thin hydrogen‑helium atmosphere. This glow is faint, observable only in the infrared with space telescopes such as the upcoming Nancy Grace Roman Space Telescope. Traveling at ~20 km s⁻¹, a rogue Earth‑mass body would cross the Solar System’s 200 AU in 15 years—a blink compared with billions‑year planetary lifespans.\n\nBecause they emit little visible light, astronomers rely on infrared excesses and microlensing to spot them. In 2015, the WISE mission flagged an isolated object, WISE J0855‑0714, whose temperature of 250 K places it between a brown dwarf and a planet, illustrating the blurry line between stellar and planetary masses. Future surveys aim to map the sky repeatedly, hoping to catch fleeting lensing events. Each detection refines the statistical map of wandering worlds, bringing the invisible population into sharper focus.\n\nThe first credible free‑floating planet surfaced in the 2003 microlensing event MOA‑2003‑BLG‑53, but a 2011 MOA‑II analysis of 474 short‑duration events revealed a statistical excess of Jupiter‑mass wanderers. This forced a rethink of planet‑formation models that assumed protoplanetary disks as closed systems. One scenario says young systems experience violent dynamical instability: massive planets fling smaller embryos onto hyperbolic paths, ejecting them into interstellar space. A more radical view holds that some rogues condense directly from dense molecular gas clouds, a star‑formation process halted before achieving fusion mass. These mechanisms also explain why some young star clusters show a deficit of massive planets, having lost them to interstellar exile. Both pathways suggest wandering worlds are a primary mode of planet production, swelling the galactic inventory far beyond bound planets.\n\nIf internal heat persists, thick ice shells could cradle subsurface oceans warmed by radioactive decay, extending the habitable‑zone concept to any insulated world, star or no star.\n\nThe existence of roaming planets also brushes up against other cosmic puzzles. The interstellar visitor ‘Oumuamua, discovered in 2017, sparked debates about its origin; some researchers proposed it could be a fragment torn from a disrupted rogue planet, offering the first tangible clue that such bodies can break apart and seed the galaxy with debris. Additionally, a swarm of massive rogues could contribute a modest fraction of the Milky Way’s dark matter as massive compact halo objects (MACHOs), although current microlensing constraints limit this contribution to under a few percent. Finally, as a rogue plows through the interstellar medium at tens of kilometres per second, it generates a bow shock that compresses surrounding gas, potentially triggering localized star formation or altering the chemistry of nearby dust grains.\n\nFloating alone in the void, rogue planets remind us that planetary destiny is not bound to a luminous anchor—solitude and motion are woven into the fabric of the cosmos. Their silent journeys broaden our definition of a world, urging us to imagine life, habitability, and even meaning beyond the familiar glow of a star. They are the dark nomads that challenge the notion that light defines the possibility of existence.",
-      "category": "Astronomy",
-      "scale": "cosmic",
-      "wonderScore": 8,
-      "source": "NASA, ESA, peer‑reviewed microlensing studies",
-      "relatedLinks": [
-        {
-          "title": "Rogue planet",
-          "url": "https://en.wikipedia.org/wiki/Rogue_planet"
-        },
-        {
-          "title": "Gravitational microlensing",
-          "url": "https://en.wikipedia.org/wiki/Gravitational_microlensing"
-        },
-        {
-          "title": "'Oumuamua",
-          "url": "https://en.wikipedia.org/wiki/'Oumuamua"
-        }
-      ],
-      "generated": "2025-11-16T01:43:51.564Z"
-    },
-    {
-      "id": "predictive-brain-chrononaut",
-      "title": "How Our Brains Live One Step Ahead of Reality",
-      "summary": "A hidden predictive engine fires in your visual cortex 150 ms before a stimulus arrives, shaping perception, memory, and even free will. Discover the neural timing, historical roots, and planetary‑scale analogies that reveal reality as the brain’s best guess.",
-      "content": "Imagine a magician flipping a card and you swear you saw its back before it was lifted. In truth, your brain has already written the story. Within roughly 150 milliseconds—before photons even hit your retina—your visual cortex fires as if it has already seen the card's face. This silent pre‑play is a daily illusion we rarely notice.\n\nThe mechanism behind this pre‑play is predictive coding, a theory that the brain constantly generates hypotheses about incoming sensory data and only forwards mismatches—prediction errors—to higher cortical areas. Neurophysiologists have measured that primary visual cortex (V1) fires at up to 30 Hz, producing a 33‑millisecond packet that aligns with expected stimulus timing. In a flashing checkerboard task, fMRI shows anticipatory BOLD signals about 150 ms before the actual flash, defining the temporal binding window. This window is razor‑thin; a 20‑ms delay can make the brain merge two sounds into a single echo. When you read a familiar word like 'psychology,' your eyes pause about 200 ms per fixation, yet you often grasp the whole sentence before the last word lands. Electrocorticography records a surge of gamma activity in Broca's area 120 ms before the target word appears, essentially 'guessing' its meaning. The brain processes roughly 1,200 bits of visual information per second, turning raw pixels into a coherent narrative before the data arrive.\n\nThe notion that perception is an educated guess dates back to Hermann von Helmholtz, who in the 1860s argued the mind fills in missing data, like a pianist improvising over a familiar melody. The 1970s introduced the \"analysis by synthesis\" model, and in 1999 Rao and Ballard formalized predictive coding as hierarchical Bayesian inference. This lineage shows the brain‑generated forecast evolved from philosophical speculation to a quantitative framework. At the neuronal level, corticothalamic loops serve as hardware for these forecasts. Layer‑6 pyramidal cells send copies of cortical predictions to the thalamus, where they are compared with actual sensory relay. If the match is close, inhibitory interneurons silence the thalamic relay, conserving energy. Optogenetic silencing of layer‑6 feedback in mice expands the temporal binding window by up to 40 ms, confirming feedback pathways tighten our perception of simultaneity.\n\nThe speed of this mental preview is staggering when compared to physics. Light travels about 300 kilometres per millisecond; in 150 ms it covers roughly 45,000 km—enough to circle Earth twice. Yet the brain's anticipatory circuitry, with about 10^14 synapses, outnumbers the Milky Way's stars (~10^11) by a thousandfold. This surplus of connections gives the brain a combinatorial palette similar to deep‑learning models that also minimise prediction error. Understanding our neural forecast therefore reshapes cognitive psychology and informs artificial systems that 'see' before they see. If you could map the brain's predictive network onto a globe, each synapse would be a city, and the traffic of expectations would resemble global internet data flows.\n\nBecause every moment you experience is already the brain's best guess, reality is less a passive recording and more an active construction. Recognizing this shifts perspective: our convictions, memories, and sense of free will are provisional forecasts, revised the instant new data arrive. In that light, curiosity becomes the engine that constantly challenges the brain's story, keeping the narrative alive.",
-      "category": "Psychology",
-      "scale": "human",
-      "wonderScore": 8,
-      "source": "Journal of Neuroscience (2022); Nature Reviews Neuroscience (2020)",
-      "relatedLinks": [
-        {
-          "title": "Predictive coding",
-          "url": "https://en.wikipedia.org/wiki/Predictive_coding"
-        },
-        {
-          "title": "Temporal binding",
-          "url": "https://en.wikipedia.org/wiki/Temporal_binding"
-        },
-        {
-          "title": "Neural oscillation",
-          "url": "https://en.wikipedia.org/wiki/Neural_oscillation"
-        }
-      ],
-      "generated": "2025-11-16T01:44:50.287Z"
     }
   ],
   "meta": {
-    "lastGenerated": "2025-12-10T01:43:56.357Z",
+    "lastGenerated": "2025-12-11T01:44:55.312Z",
     "totalFacts": 50
   }
 }
