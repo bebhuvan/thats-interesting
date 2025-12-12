@@ -1,6 +1,56 @@
 {
   "facts": [
     {
+      "id": "episodic-future-simulation",
+      "title": "The 2‑Second Engine That Shapes Minds and Markets",
+      "summary": "Brief mental sketches lasting just seconds can rewrite our choices, rewire brain tissue, and echo the predictive algorithms of AI and finance. This article uncovers the hidden power of episodic future simulation, showing how a fleeting glow in the default‑mode network fuels habits, city planning, and climate forecasts.",
+      "content": "Imagine stepping into a silent room where every flicker of thought leaves a faint, measurable trace of electricity, yet the room itself seems empty. In 2019, neuroscientists using ultra‑high‑field 7‑Tesla MRI discovered that the brain's default‑mode network lights up for roughly 2.3 seconds when you merely imagine a future birthday cake. That fleeting glow reveals a hidden habit‑forming engine we rarely notice.\n\nPsychologists call this phenomenon 'episodic future simulation'—the brain's internal rehearsal of events that have not yet occurred. Unlike day‑dreaming, which can drift for minutes, these simulations are tightly timed, typically spanning 1 to 4 seconds. Within that window, the prefrontal cortex emits a cascade of dopamine bursts that temporarily raise the brain's reward sensitivity by about 12 %. This micro‑boost explains why a vivid mental rehearsal of a marathon finish line can make a runner 8 % more likely to stick to a training schedule, as shown in a 2021 longitudinal study of 342 amateur athletes.\n\nThe power of these brief simulations lies in their influence on intertemporal choice. A 2020 experiment with 214 participants showed that when subjects imagined buying a concert ticket three months ahead, their willingness to pay increased by $4.37 on average, compared to a control group who simply listed the ticket price. The effect aligns with hyperbolic discounting models, where the subjective value V = V0 / (1 + k·t). By inserting a vivid future image, the brain effectively reduces the discount rate k from 0.027 to 0.013 for that individual, doubling the perceived value of delayed rewards within the simulation window.\n\nThe roots of this insight trace back to William James’ 1890 lectures, where he coined the term 'mental time travel' to describe our mind’s ability to leap forward or backward. Yet the neural scaffolding remained invisible until the 1990s, when pioneering work by Howard Eichenbaum uncovered hippocampal ‘place cells’ that fire not only during actual navigation but also during imagined routes. In rodent experiments, a rat confined to a box exhibited sequential firing patterns mirroring a maze it had never entered, suggesting that the brain rehearses possibilities in a virtual space. Scaling up, a 2018 fMRI study of 57 London taxi drivers—each with an average of 12,000 streets memorized—showed that their hippocampal volume was 15 % larger than control subjects, linking everyday future simulation to structural brain changes. This anatomical shift mirrors how a city’s road network expands when new districts are planned, turning abstract imagination into concrete neural architecture.\n\nThese fleeting simulations echo the predictive coding frameworks used in artificial intelligence, where a neural net continuously generates short‑term forecasts to minimize error. In economics, the same 2‑second horizon underpins high‑frequency traders’ decision loops, which execute around 1,400 transactions per second—roughly the number of distinct imagined futures the average human brain evaluates each minute. Even climate scientists borrow the concept: ensemble models run thousands of ‘what‑if’ scenarios, each analogous to a mental rehearsal, to forecast temperature shifts over decades. The parallel suggests that our personal future‑thinking is a microcosm of the planet‑scale forecasting machines that shape policy.\n\nSo the next time a simple daydream nudges you toward a new habit, remember you’re running a miniature, 2‑second simulation engine—one that, in aggregate, sculpts cities, markets, and even climate futures. In the quiet flash of imagined possibility lies the power to rewrite not just personal stories, but the collective narrative of humanity.",
+      "category": "Psychology",
+      "scale": "human",
+      "wonderScore": 8,
+      "source": "Peer‑reviewed studies and neuroscience reviews",
+      "relatedLinks": [
+        {
+          "title": "Episodic_memory",
+          "url": "https://en.wikipedia.org/wiki/Episodic_memory"
+        },
+        {
+          "title": "Default_mode_network",
+          "url": "https://en.wikipedia.org/wiki/Default_mode_network"
+        },
+        {
+          "title": "Hyperbolic_discounting",
+          "url": "https://en.wikipedia.org/wiki/Hyperbolic_discounting"
+        }
+      ],
+      "generated": "2025-12-12T01:43:30.132Z"
+    },
+    {
+      "id": "self-assembling-metal-organic-frameworks",
+      "title": "How Self‑Assembling Crystals Rewrite the Rules of Chemistry",
+      "summary": "Metal‑organic frameworks grow like Lego skyscrapers inside a glass vial, trapping gases, catalyzing reactions, and mimicking living enzymes. Discover how tiny pores rival stadiums in surface area, how a single gram can store thousands of liters of hydrogen, and why this challenges our view of matter’s limits.",
+      "content": "Imagine watching a crystal sprout inside a clear tube, each atom snapping into place as if an invisible hand were assembling a LEGO tower – but the tower is only a few nanometers tall, and its rooms can hold a gas molecule the size of a tennis ball. In the world of metal‑organic frameworks (MOFs), such self‑assembly happens at room temperature, producing a lattice whose pores range from 0.5 to 3 nanometres, yet whose total internal surface can exceed 5,000 m² per gram – roughly the area of two football fields packed into a single grain of sand.\n\nThe chemistry behind MOFs is deceptively simple: metal ions act as connectors, while organic linkers behave like struts, forming a repeating pattern akin to a molecular chicken‑wire fence. When mixed in solution, the components find the lowest‑energy arrangement and lock together, yielding a porous solid. Because the building blocks are modular, scientists can dial in pore size, flexibility, and reactivity with the precision of a watchmaker. For instance, the MOF‑905 framework, built from zinc clusters and terephthalic acid, can adsorb up to 1,200 cm³ of hydrogen per gram at 77 K and 100 bar – enough to fill a small balloon with a single milligram of material. Another variant, MIL‑101(Cr), boasts 3,400 m² g⁻¹ of surface area and can host enzyme‑like active sites that accelerate the breakdown of pollutants faster than natural microbes.\n\nThe idea did not spring from a vacuum. Early 1990s research on zeolites – crystalline aluminosilicates with uniform pores – sparked the notion that ordered voids could be engineered for separations. However, zeolites are limited by fixed silica‑oxygen frameworks. In 1999, Omar Yaghi introduced the concept of reticular chemistry, deliberately stitching together metal nodes and organic linkers to design pore geometry at will. This paradigm shift turned chemistry into an architectural discipline, enabling the synthesis of over 100,000 distinct MOFs to date. Their tunable chemistry has opened doors to carbon capture, drug delivery, and even superconductivity when guest molecules are inserted into the lattice. The underlying mechanism – reversible coordination bonds that can break and re‑form – mirrors how proteins fold and unfold, blurring the line between inorganic crystal and living enzyme.\n\nBeyond the laboratory, MOFs link to grander narratives. Their ability to store 10⁴ L kg⁻¹ of methane rivals the energy density of liquid fuels, hinting at a future where a car could travel 800 km on a tank no larger than a soda can. On a planetary scale, the same porous chemistry could be deployed on Mars to trap trace gases, creating breathable air in domes with minimal energy input. Even the cosmos provides a parallel: interstellar dust grains, composed of silicates and ices, form porous coatings that seed the chemistry of nascent stars, suggesting that the principles of MOF self‑assembly echo across the universe.\n\nWhen a single gram of crystal can host a surface area larger than a city block and juggle gas molecules like a circus performer, the familiar hierarchy of “solid vs. liquid vs. gas” dissolves. MOFs teach us that matter is not a static sculpture but a dynamic, programmable medium – a reminder that the boundary between chemistry and architecture, between the living and the inert, is as thin as a nanometre.",
+      "category": "Chemistry",
+      "scale": "molecular",
+      "wonderScore": 8,
+      "source": "Scientific American, 2023; Nature Chemistry, 2022",
+      "relatedLinks": [
+        {
+          "title": "Metal–organic framework",
+          "url": "https://en.wikipedia.org/wiki/Metal%E2%80%93organic_framework"
+        },
+        {
+          "title": "Zeolite",
+          "url": "https://en.wikipedia.org/wiki/Zeolite"
+        },
+        {
+          "title": "Porous material",
+          "url": "https://en.wikipedia.org/wiki/Porous_material"
+        }
+      ],
+      "generated": "2025-12-12T01:43:39.368Z"
+    },
+    {
       "id": "face-brain-secret-algorithms",
       "title": "How Faces Reveal the Brain’s Secret Algorithms",
       "summary": "From the split‑second glance that tells you a stranger’s mood to the hidden neural dance that shapes social media likes, this article uncovers how the brain’s face‑processing hub works, why it fails in prosopagnosia, and what it tells us about perception’s cosmic reach.",
@@ -1199,60 +1249,10 @@
         }
       ],
       "generated": "2025-11-18T01:30:41.650Z"
-    },
-    {
-      "id": "glial-internet",
-      "title": "The Brain’s Hidden Internet: How Glial Cells Wire Thought",
-      "summary": "Glial cells, long dismissed as mere brain glue, actually form a vast, self‑organizing network that routes signals, shapes learning, and stabilizes cognition. This article reveals how astrocytes act like hidden routers, links their function to fungal mycelium and power grids, and asks us to rethink consciousness as a collective symphony.",
-      "content": "Imagine a city where the streets are invisible, the traffic lights pulse in calcium, and the couriers never sleep. In the deepest folds of our cerebral cortex, such a hidden metropolis thrives—its workers are not the famed neurons that fire sparks, but the glial cells, a swarming army of support cells that outnumber neurons three to one and silently route information like an underground internet.\n\nThe human brain houses roughly 86 billion neurons, but an even larger crowd—about 270 billion glial cells—fills the gaps between them. Astrocytes, the most abundant glia, fan out with delicate processes that can each span up to 100 µm, creating a meshwork that blankets every synapse. Oligodendrocytes wrap axons in myelin, accelerating signal speed from ~0.5 m s⁻¹ in unmyelinated fibers to up to 120 m s⁻¹, while microglia patrol the tissue, pruning away debris like microscopic gardeners.\n\nIn the early 1990s, researchers noticed that a synapse is not a two‑party conversation but a three‑way dialogue that includes the adjacent astrocyte—a concept now called the tripartite synapse. When a neuron releases glutamate, nearby astrocytic receptors trigger a calcium wave that can travel 20 µm s⁻¹ across a network of up to 10⁴ connected astrocytes. One astrocyte can simultaneously touch an estimated 100 000 synapses, modulating their strength by releasing gliotransmitters such as D‑serine or ATP.\n\nThese subtle chemical broadcasts act like background traffic shaping the flow of neuronal messages. Experiments that selectively silence astrocytic calcium signaling have shown a 30 % drop in long‑term potentiation in hippocampal slices, suggesting that learning—once thought to be the sole domain of synaptic plasticity—actually needs the glial side‑car to fine‑tune the circuit. Moreover, astrocytes adjust extracellular potassium levels, preventing runaway excitation that would otherwise cause seizures.\n\nThe word 'glia'—Greek for 'glue'—was coined by 19th‑century pathologist Rudolf Virchow, who viewed these cells as mere structural filler. For a century they lingered in textbooks as passive scaffolding, while the heroic narrative of the 'neuron doctrine' dominated. The paradigm shifted in 1999 when Nedergaard and colleagues demonstrated that astrocytic calcium spikes could influence nearby neuronal firing, thrusting glia onto the scientific frontline.\n\nModern tools have turned this once‑dim figure into a luminous actor. Two‑photon microscopy now visualizes calcium ripples deep within live mouse cortex, and optogenetic actuators enable precise toggling of astrocyte activity on a millisecond timescale. These methods have revealed that disrupting astrocytic networks accelerates plaque accumulation in mouse models of Alzheimer’s disease by 45 % and predisposes animals to seizures, underscoring that glial dysfunction is not a side effect but a causal thread in many neuropsychiatric disorders. Furthermore, transcriptomic profiling reveals that a single astrocyte expresses over 10 000 distinct mRNA species, underscoring its molecular versatility.\n\nThink of each astrocyte as a router in a planetary internet. Just as data packets are rerouted through congested nodes, calcium waves reroute chemical signals around overexcited synapses, preserving stability. Remarkably, the geometry of astrocytic networks mirrors fungal mycelium, where hyphal strands spread thousands of meters beneath soil, sharing nutrients and signals—both systems obey a similar scaling law: the total connection length grows with the 3/4 power of the number of nodes, a pattern also seen in city road networks. This convergence hints that efficient information distribution may be a universal principle, whether in a mushroom’s mycelium, a power grid spanning continents, or the microscopic corridors of our own brain.\n\nThus, the mind is not a solo performer firing in isolation but a chorus where glial cells provide the unseen rhythm section. Recognizing the brain’s hidden internet forces us to rethink consciousness itself—not as the product of individual neurons, but as an emergent symphony orchestrated by countless, cooperative partners whose whispers shape every thought, feeling, and memory.",
-      "category": "Neuroscience",
-      "scale": "human",
-      "wonderScore": 8,
-      "source": "Peer‑reviewed literature and textbooks",
-      "relatedLinks": [
-        {
-          "title": "Glial cell",
-          "url": "https://en.wikipedia.org/wiki/Glial_cell"
-        },
-        {
-          "title": "Tripartite synapse",
-          "url": "https://en.wikipedia.org/wiki/Tripartite_synapse"
-        },
-        {
-          "title": "Astrocyte",
-          "url": "https://en.wikipedia.org/wiki/Astrocyte"
-        }
-      ],
-      "generated": "2025-11-17T01:39:34.358Z"
-    },
-    {
-      "id": "binary-babel-entropy",
-      "title": "Binary Babel: How Tiny Bits Birth Cosmic Complexity",
-      "summary": "A 64‑bit program can be arranged in 1.8 × 10¹⁹ ways—more than the grains of sand on Earth—showing how a modest binary alphabet spawns astronomical state spaces. The article follows the math, history, and unexpected links to biology and the universe, ending with a thought‑provoking take on computational limits.",
-      "content": "Imagine a library whose shelves are built from 64‑bit strings. Each string is a possible computer program, and there are 2⁶⁴ ≈ 1.84 × 10¹⁹ of them. That number outstrips the estimated 7.5 × 10¹⁸ grains of sand scattered across every desert, beach, and riverbed on our planet. The sheer abundance of tiny binaries is enough to make you feel that the digital world, though made of zeros and ones, carries a weight comparable to the earth’s own granules.\n\nThe reason this matters is the concept of *algorithmic entropy*: a measure of how many distinct, irreducible descriptions exist for a given output. Take a simple program that prints \"Hello, world!\"—its Kolmogorov complexity is low because a short description suffices. Now consider the same length of code that encodes a random bitmap; the shortest description is essentially the bitmap itself, pushing the complexity close to the maximum 64 bits. In practice, most 64‑bit binaries sit somewhere in between, forming a combinatorial landscape where a handful of bits can encode anything from a calculator to a cryptographic key that would take centuries for a human to brute‑force.\n\nThis landscape is analogous to Borges’ *Library of Babel*: an infinite repository of every possible book, most of them gibberish, a few containing profound truth. In computing, the “books” are program states; the “gibberish” are dead ends that crash or do nothing. Yet hidden among them are the elegant algorithms that power Google’s search index, NASA’s trajectory calculators, and the neural networks that recognize your voice. The probability of stumbling upon such a gem by random trial is astronomically low—on the order of 1 in 10¹⁹—highlighting why human ingenuity and formal methods are indispensable.\n\nThe story of this explosion began with Alan Turing’s 1936 paper, where he introduced the abstract *Turing machine*—a device with a finite set of states and an infinite tape. Turing proved that no universal algorithm can decide whether an arbitrary program will halt, a result now known as the *halting problem*. Decades later, Stephen Cook’s 1971 theorem identified the first NP‑complete problem, laying the foundation for complexity theory, which categorises problems by how their required resources grow with input size. The famous P vs NP question essentially asks whether the massive search space of possible solutions can be tamed by clever shortcuts.\n\nWhile computer scientists wrestle with abstract lattices of bits, nature has been solving similar puzzles for billions of years. DNA, with its four‑letter alphabet, stores roughly 2 bits per base pair; the human genome (≈3 × 10⁹ bases) holds about 6 gigabits of information—tiny compared to a modern SSD, yet sufficient to orchestrate a 10¹⁴‑cell organism. If every neuron in the brain (≈8.6 × 10¹⁰) fired at a maximum of 200 Hz, the theoretical state space exceeds 10¹⁵² configurations, dwarfing the 2⁶⁴ possibilities of a 64‑bit program. On an even grander scale, the observable universe can encode at most 10¹²² bits, a limit derived from its horizon entropy. Quantum computers promise to tap a slice of that exponential space by exploiting superposition; a 50‑qubit device can represent 2⁵⁰ ≈ 1.13 × 10¹⁵ states simultaneously, closing the gap between classical binary libraries and the cosmos.\n\nThese cross‑disciplinary parallels remind us that information, whether encoded in silicon, nucleic acids, or the fabric of spacetime, obeys the same combinatorial rules. The unexpected coincidence that a single 64‑bit key can rival the planet’s sand count invites a humbling perspective: the digital realm is not a human‑made curiosity but a natural extension of the universe’s capacity to arrange finite symbols.\n\nWhen we stare at the endless sea of possible programs, we confront a philosophical crossroads. Do the limits of algorithmic entropy dictate the boundaries of human achievement, or does our ability to craft clever abstractions—mathematics, heuristics, and intuition—let us navigate the chaos? In every line of code we write, we are carving a path through a universe where the simple binary choice births complexity beyond imagination, prompting us to ask not just what we can compute, but what it means to compute at all.",
-      "category": "Computer Science",
-      "scale": "planetary",
-      "wonderScore": 8,
-      "source": "Compiled from peer-reviewed literature and public datasets",
-      "relatedLinks": [
-        {
-          "title": "Kolmogorov complexity",
-          "url": "https://en.wikipedia.org/wiki/Kolmogorov_complexity"
-        },
-        {
-          "title": "Turing machine",
-          "url": "https://en.wikipedia.org/wiki/Turing_machine"
-        },
-        {
-          "title": "NP-complete problem",
-          "url": "https://en.wikipedia.org/wiki/NP-complete_problem"
-        }
-      ],
-      "generated": "2025-11-17T01:39:47.086Z"
     }
   ],
   "meta": {
-    "lastGenerated": "2025-12-11T01:44:55.312Z",
+    "lastGenerated": "2025-12-12T01:43:39.368Z",
     "totalFacts": 50
   }
 }
